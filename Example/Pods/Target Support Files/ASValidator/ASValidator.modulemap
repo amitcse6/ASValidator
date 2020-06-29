@@ -1,0 +1,6 @@
+framework module ASValidator {
+  umbrella header "ASValidator-umbrella.h"
+
+  export *
+  module * { export * }
+}

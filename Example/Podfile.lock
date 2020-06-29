@@ -1,0 +1,16 @@
+PODS:
+  - ASValidator (0.1.0)
+
+DEPENDENCIES:
+  - ASValidator (from `../`)
+
+EXTERNAL SOURCES:
+  ASValidator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ASValidator: fcdc530b771a4159684b220abe6af6748290ce1c
+
+PODFILE CHECKSUM: 66127358e8ce87f64bdac0af5de823bf6c3dec5a
+
+COCOAPODS: 1.9.1
