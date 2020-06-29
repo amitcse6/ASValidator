@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ASValidator_Example' do
+  pod 'ASValidator', :path => '../'
+
+  target 'ASValidator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
