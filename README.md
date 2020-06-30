@@ -22,7 +22,7 @@ pod 'ASValidator'
 
 ## Author
 
-amitpstu1@gmail.com, amitpstu1@gmail.com
+Amit Mondol, amitpstu1@gmail.com
 
 ## License
 
