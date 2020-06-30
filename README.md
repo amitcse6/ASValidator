@@ -54,7 +54,7 @@ extension UITextField {
 ## Validation Rule
 
 ```swift
-textField.register(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(nil), ASVMinLengthRule(2), ASVMaxLengthRule(5, nil)])
+ASVRequiredRule("Error Message(Optional)"), ASVMinLengthRule(2, "Error Message(Optional)"), ASVMaxLengthRule(5, "Error Message(Optional)")
 ```
 
 
