@@ -14,7 +14,7 @@ Screenshots
 ```swift
 import SValidator
 
-// Validation
+// Validation Initialize
 let svalidator = ASValidator()
 usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "User name")
 usernameTextField.placeholder = "Enter Email Address"
@@ -24,6 +24,15 @@ passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), 
 passwordTextField.placeholder = "Enter Password"
 passwordTextField.delegate = self
 
+// Validation Perform
+let validate = asValidator.validate()
+if let validate = validate, validate.isValid() {
+    // MARK: - Validation Success
+    print("Validation Success")
+}else{
+    // MARK: - Validation Fail
+    print("Validation Fail")
+}
 
 // Delegate
 @available(iOS 10.0, *)
