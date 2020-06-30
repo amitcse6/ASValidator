@@ -10,11 +10,11 @@
 ```swift
 import SValidator
 
+// Validation
+let svalidator = ASValidator()
+textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
 
-let validator = ASValidator()
-textField.addField(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
-
-
+// for efficiently use
 extension UITextField {
     func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
         register(
@@ -31,6 +31,13 @@ extension UITextField {
     }
 }
 ```
+
+## Validation Rule
+
+```swift
+textField.register(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(nil), ASVMinLengthRule(2), ASVMaxLengthRule(5, nil)])
+```
+
 
 ## Requirements
 
