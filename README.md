@@ -7,7 +7,7 @@
 
 Screenshots
 ---------
-![ASValidator Screenshots](asvalidator_screenshot.gif)
+![ASValidator Screenshots](https://raw.githubusercontent.com/amitcse6/ASValidator/master/asvalidator_screenshot.gif)
 
 ## Example
 
