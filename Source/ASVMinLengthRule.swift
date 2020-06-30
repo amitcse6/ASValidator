@@ -9,8 +9,8 @@
 import Foundation
 
 public class ASVMinLengthRule: ASVRule {
-    var errorMsg: String?
-    var length: Int
+    private var errorMsg: String?
+    private var length: Int
     
     public init(_ length: Int, _ errorMsg: String? = nil) {
         self.length = length
@@ -21,6 +21,6 @@ public class ASVMinLengthRule: ASVRule {
         if let value = value?.trimmingCharacters(in: .whitespaces), value.count >= length {
             return nil
         }
-        return ASVError(errorMsg: nil)
+        return ASVError(errorMsg: errorMsg ?? "required minimum \(length) character\(ASVMath.getSigOrPlu(length)) long") 
     }
 }

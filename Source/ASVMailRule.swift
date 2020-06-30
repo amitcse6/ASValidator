@@ -9,20 +9,18 @@
 import Foundation
 
 public class ASVMailRule: ASVRule {
-    var errorMsg: String?
+    private var errorMsg: String?
     
     public init(_ errorMsg: String? = nil) {
         self.errorMsg = errorMsg
     }
     
     public func validate(_ value: String?) -> ASVError? {
-        if let value = value?.trimmingCharacters(in: .whitespaces), value.count > 0 {
-            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-            if emailPred.evaluate(with: value) {
-                return nil
-            }
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if let value = value?.trimmingCharacters(in: .whitespaces), emailPred.evaluate(with: value)  {
+            return nil
         }
-        return ASVError(errorMsg: nil)
+        return ASVError(errorMsg: errorMsg ?? "is not correct")
     }
 }

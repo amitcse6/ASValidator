@@ -8,20 +8,23 @@
 
 import Foundation
 
-public class ASValidator: NSObject {
+public class ASValidator {
     private var svalidatorEntities: [ASValidatorEntity] = [ASValidatorEntity]()
+    
+    public init() {
+    }
     
     func append(_ svalidatorEntity: ASValidatorEntity) {
         svalidatorEntities.append(svalidatorEntity)
     }
     
-    public func validate() -> SValidation? {
-        let svalidation = SValidation()
+    public func validate() -> ASValidation? {
+        let asvalidation = ASValidation()
         for (_, entitie) in svalidatorEntities.enumerated() {
             let result = entitie.validate()
-            svalidation.results.append(result)
+            asvalidation.results.append(result)
         }
-        return svalidation
+        return asvalidation
     }
     
     @objc public func errorResetAll() {
@@ -31,27 +34,17 @@ public class ASValidator: NSObject {
     }
 }
 
-public class SValidation: NSObject {
-    var results = [ASVResult]()
-    
-    public func isValid() -> Bool {
-        for result in results {
-            if result.sverrors.count != 0 {
-                return false
-            }
-        }
-        return true
-    }
-}
+
 
 extension UITextField {
-    public func register(
+    public func registerASVTF(
         svalidator: ASValidator?,
         field: UITextField?,
+        name: String?,
         errorLabel: UILabel?,
         errorBorderView: UIView?,
-        errorBorderColor: UIColor?,
-        normalBorderColor: UIColor?,
+        errorBorderColor: CGColor?,
+        normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
         rules: [ASVRule]?
@@ -59,6 +52,7 @@ extension UITextField {
         if let svalidator = svalidator { 
             svalidator.append(ASValidatorEntity(
                 field: field,
+                name: name,
                 errorLabel: errorLabel,
                 errorBorderView: errorBorderView,
                 errorBorderColor: errorBorderColor,

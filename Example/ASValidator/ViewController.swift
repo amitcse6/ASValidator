@@ -12,26 +12,26 @@ import ASValidator
 class ViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var usernameErrorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     
     private let asValidator = ASValidator()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        usernameTextField.addField(svalidator: asValidator, defaultErrorMsg: nil, rules: [ASVRequiredRule()])
+        
+        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "User name")
+        usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         
-        passwordTextField.addField(svalidator: asValidator, defaultErrorMsg: nil, rules: [ASVRequiredRule()])
+        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
+        passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func loginEventHandler(_ sender: Any) {
@@ -54,14 +54,15 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension UITextField {
-    func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
-        register(
+    func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
+        registerASVTF(
             svalidator: svalidator,
             field: self,
-            errorLabel: nil,
+            name: name,
+            errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: .red,
-            normalBorderColor: .gray,
+            errorBorderColor: UIColor.red.cgColor,
+            normalBorderColor: UIColor.lightGray.cgColor,
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: 1.0,
             rules: rules

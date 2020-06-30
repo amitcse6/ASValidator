@@ -19,6 +19,6 @@ public class ASVRequiredRule: ASVRule {
         if let value = value?.trimmingCharacters(in: .whitespaces), value.count > 0 {
             return nil
         }
-        return ASVError(errorMsg: nil)
+        return ASVError(errorMsg: errorMsg ?? "required")
     }
 }

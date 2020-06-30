@@ -8,28 +8,30 @@
 
 import Foundation
 
-public class ASValidatorEntity: NSObject {
-    var field: UITextField?
-    var errorLabel: UILabel?
-    var errorBorderView: UIView?
-    var errorBorderColor: UIColor?
-    var normalBorderColor: UIColor?
-    var defaultErrorMsg: String?
-    var borderWidth: CGFloat?
-    var rules: [ASVRule]?
-    
-    
+public class ASValidatorEntity {
+    private var field: UITextField?
+    private var name: String?
+    private var errorLabel: UILabel?
+    private var errorBorderView: UIView?
+    private var errorBorderColor: CGColor?
+    private var normalBorderColor: CGColor?
+    private var defaultErrorMsg: String?
+    private var borderWidth: CGFloat?
+    private var rules: [ASVRule]?
     
     init(
         field: UITextField?,
+        name: String?,
         errorLabel: UILabel?,
         errorBorderView: UIView?,
-        errorBorderColor: UIColor? = .red,
-        normalBorderColor: UIColor? = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0),
+        errorBorderColor: CGColor?,
+        normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat? = 1.0,
-        rules: [ASVRule]?) {
+        rules: [ASVRule]?
+    ) {
         self.field = field
+        self.name = name
         self.errorLabel = errorLabel
         self.errorBorderView = errorBorderView
         self.errorBorderColor = errorBorderColor
@@ -52,34 +54,45 @@ public class ASValidatorEntity: NSObject {
         return svresult
     }
     
+    func getErrorMessage(_ svresult: ASVResult) -> String? {
+        for sverror in svresult.sverrors {
+            if let _errorMsg = sverror.errorMsg {
+                var errorMsg = (defaultErrorMsg ?? "Invalid \(name ?? "input")")
+                errorMsg = "\(ASVMath.checkString(name))\(_errorMsg)"
+                return errorMsg
+            }
+        }
+        return nil
+    }
+    
     func setErrorMessage(_ svresult: ASVResult) {
-        if let sverror = svresult.sverrors.first {
-            setErrorBorderColor(sverror.errorMsg ?? "Invalid \(defaultErrorMsg ?? "Input!")")
+        if let errorMsg = getErrorMessage(svresult) {
+            setErrorStyle(errorMsg)
         }else{
-            setNormalBorderColor("")
+            setNormalStyle("")
         }
     }
     
     func errorReset() {
-        setNormalBorderColor("")
+        setNormalStyle("")
     }
 }
 
 extension ASValidatorEntity {
-    func setErrorBorderColor(_ errorMsg: String) {
+    func setErrorStyle(_ errorMsg: String) {
         if let errorBorderView = errorBorderView {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
-            errorBorderView.layer.borderColor = errorBorderColor?.cgColor
+            errorBorderView.layer.borderColor = errorBorderColor
         }
         if let errorLabel = errorLabel {
             errorLabel.text = errorMsg
         }
     }
     
-    func setNormalBorderColor(_ errorMsg: String) {
+    func setNormalStyle(_ errorMsg: String) {
         if let errorBorderView = errorBorderView {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
-            errorBorderView.layer.borderColor = normalBorderColor?.cgColor
+            errorBorderView.layer.borderColor = normalBorderColor
         }
         if let errorLabel = errorLabel {
             errorLabel.text = errorMsg

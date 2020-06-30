@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class ASVResult: NSObject {
-    var sverrors: [ASVError] = [ASVError]()
+public class ASVResult {
+    public var sverrors: [ASVError] = [ASVError]()
 }

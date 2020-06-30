@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ASVError: NSObject { 
+public class ASVError { 
     var errorMsg: String?
     
     public init(errorMsg: String?) {
