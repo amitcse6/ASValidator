@@ -5,6 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/ASValidator.svg?style=flat)](https://cocoapods.org/pods/ASValidator)
 [![Platform](https://img.shields.io/cocoapods/p/ASValidator.svg?style=flat)](https://cocoapods.org/pods/ASValidator)
 
+Screenshots
+---------
+![ASValidator Screenshots](asvalidator_screenshot.gif)
+
 ## Example
 
 ```swift
