@@ -18,7 +18,7 @@ import SValidator
 let svalidator = ASValidator()
 textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
 
-// for efficiently use
+// for optimization
 extension UITextField {
     func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
         register(
