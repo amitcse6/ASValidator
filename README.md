@@ -16,18 +16,33 @@ import SValidator
 
 // Validation
 let svalidator = ASValidator()
-textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
+usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "User name")
+usernameTextField.placeholder = "Enter Email Address"
+usernameTextField.delegate = self
+        
+passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
+passwordTextField.placeholder = "Enter Password"
+passwordTextField.delegate = self
+
+
+// Delegate
+@available(iOS 10.0, *)
+func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    asValidator.errorResetAll()
+}
+
 
 // for optimization
 extension UITextField {
-    func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
-        register(
+    func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
+        registerASVTF(
             svalidator: svalidator,
             field: self,
-            errorLabel: nil,
+            name: name,
+            errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: .red,
-            normalBorderColor: .gray,
+            errorBorderColor: UIColor.red.cgColor,
+            normalBorderColor: UIColor.lightGray.cgColor,
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: 1.0,
             rules: rules
