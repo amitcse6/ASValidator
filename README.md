@@ -7,7 +7,30 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```swift
+import SValidator
+
+
+let validator = ASValidator()
+textField.addField(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
+
+
+extension UITextField {
+    func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
+        register(
+            svalidator: svalidator,
+            field: self,
+            errorLabel: nil,
+            errorBorderView: self,
+            errorBorderColor: .red,
+            normalBorderColor: .gray,
+            defaultErrorMsg: defaultErrorMsg,
+            borderWidth: 1.0,
+            rules: rules
+        )
+    }
+}
+```
 
 ## Requirements
 
