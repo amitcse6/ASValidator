@@ -32,7 +32,7 @@ func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndE
 }
 
 
-// for optimization
+// Default configuration
 extension UITextField {
     func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
         registerASVTF(
@@ -43,7 +43,7 @@ extension UITextField {
             errorBorderView: self,
             errorBorderColor: UIColor.red.cgColor,
             normalBorderColor: UIColor.lightGray.cgColor,
-            defaultErrorMsg: defaultErrorMsg,
+            defaultErrorMsg: defaultErrorMsg ?? "Invalid Input!",
             borderWidth: 1.0,
             rules: rules
         )
