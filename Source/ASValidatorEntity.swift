@@ -41,7 +41,7 @@ public class ASValidatorEntity {
         self.rules = rules
     }
     
-    func validate() -> ASVResult {
+    func validate(_ isShowError: Bool) -> ASVResult {
         let svresult = ASVResult()
         if let rules = rules {
             for (_, rule) in rules.enumerated() {
@@ -50,7 +50,9 @@ public class ASValidatorEntity {
                 }
             }
         }
-        setErrorMessage(svresult)
+        if isShowError {
+            setErrorMessage(svresult)
+        }
         return svresult
     }
     
