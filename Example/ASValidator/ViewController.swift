@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     
+    @IBOutlet weak var submitButton: UIButton!
+    
     private let asValidator = ASValidator()
 
     override func viewDidLoad() {
@@ -28,6 +30,8 @@ class ViewController: UIViewController {
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
+        
+        asValidator.invalidDisableViews([submitButton])
     }
 
     override func didReceiveMemoryWarning() {

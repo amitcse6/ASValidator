@@ -80,6 +80,7 @@
                     <connections>
                         <outlet property="passwordErrorLabel" destination="hV6-Zm-vWV" id="qwT-WQ-8Pt"/>
                         <outlet property="passwordTextField" destination="Haa-aj-Vyu" id="NS0-cE-LYg"/>
+                        <outlet property="submitButton" destination="GTD-0C-W43" id="lXo-Di-PbO"/>
                         <outlet property="usernameErrorLabel" destination="F8x-oS-tFj" id="gXq-Ic-HQu"/>
                         <outlet property="usernameTextField" destination="XFz-fw-5H3" id="icm-pr-58l"/>
                     </connections>
