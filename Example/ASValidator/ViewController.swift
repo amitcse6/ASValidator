@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         
-        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
+        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVEqualFieldRule(usernameTextField)], "Password")
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
         

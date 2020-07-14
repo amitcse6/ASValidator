@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class ASValidator {
     private var svalidatorEntities: [ASValidatorEntity] = [ASValidatorEntity]()
