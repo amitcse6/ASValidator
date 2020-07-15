@@ -13,6 +13,7 @@ public class ASValidator {
     private var svalidatorEntities: [ASValidatorEntity] = [ASValidatorEntity]()
     private var invalidActionView: [Any?]?
     private var invalidActionViewDisable: Bool?
+    private var firstInvalidAttemptNumber: Int = 0
     
     public init() {
     }
@@ -30,6 +31,14 @@ public class ASValidator {
         return asvalidation
     }
     
+    public func validation() -> ASValidation? {
+        if firstInvalidAttemptNumber > 0 {
+            self.firstInvalidAttemptNumber = self.firstInvalidAttemptNumber - 1
+        }
+        let asvalidation = validate(true)
+        return asvalidation
+    }
+    
     public func invalidDisableViews(_ invalidActionView: [Any?]?, _ invalidActionViewDisable: Bool? = false) {
         self.invalidActionView = invalidActionView
         self.invalidActionViewDisable = invalidActionViewDisable
@@ -38,6 +47,11 @@ public class ASValidator {
         }
     }
     
+    public func ignoreFirstInvalidAttemptNumber(_ number: Int) {
+        self.firstInvalidAttemptNumber = number
+    }
+    
+    
     @objc public func errorResetAll() {
         for (_, entitie) in svalidatorEntities.enumerated() {
             entitie.errorReset()
@@ -45,8 +59,8 @@ public class ASValidator {
     }
     
     @objc public func invalidAction() {
-        let validate = self.validate(true)
-        if let isValid = validate?.isValid(), let views = invalidActionView {
+        let validate = self.validate(firstInvalidAttemptNumber == 0)
+        if firstInvalidAttemptNumber == 0, let isValid = validate?.isValid(), let views = invalidActionView {
             for (_, view) in views.enumerated() {
                 let view = view as? UIView
                 view?.isUserInteractionEnabled = isValid
