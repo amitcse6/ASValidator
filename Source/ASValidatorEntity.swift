@@ -79,6 +79,10 @@ public class ASValidatorEntity {
     func errorReset() {
         setNormalStyle("")
     }
+    
+    func resetValue() {
+        field?.text = ""
+    }
 }
 
 extension ASValidatorEntity {

@@ -23,15 +23,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "User name")
+        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         
-        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVEqualFieldRule(usernameTextField)], "Password")
+        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
         
         asValidator.invalidDisableViews([submitButton])
+        
+        asValidator.hideKeyboardWhenTappedAround(view)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginEventHandler(_ sender: Any) {
-        let validate = asValidator.validate()
+        let validate = asValidator.apply()
         if let validate = validate, validate.isValid() {
             // MARK: - Validation Success
             print("Validation Success")
@@ -48,6 +50,7 @@ class ViewController: UIViewController {
             print("Validation Fail")
         }
     }
+    
 }
 
 extension ViewController: UITextFieldDelegate {

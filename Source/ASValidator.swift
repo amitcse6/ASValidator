@@ -22,7 +22,8 @@ public class ASValidator {
         svalidatorEntities.append(svalidatorEntity)
     }
     
-    public func validate(_ isShowError: Bool? = nil) -> ASValidation? {
+    // MARK: - Public Validation Handler
+    public func publicValidationHandler(_ isShowError: Bool? = nil) -> ASValidation? {
         let asvalidation = ASValidation()
         for (_, entitie) in svalidatorEntities.enumerated() {
             let result = entitie.validate(isShowError ?? true)
@@ -31,11 +32,11 @@ public class ASValidator {
         return asvalidation
     }
     
-    public func validation() -> ASValidation? {
+    public func apply() -> ASValidation? {
         if firstInvalidAttemptNumber > 0 {
             self.firstInvalidAttemptNumber = self.firstInvalidAttemptNumber - 1
         }
-        let asvalidation = validate(true)
+        let asvalidation = publicValidationHandler(true)
         return asvalidation
     }
     
@@ -58,8 +59,12 @@ public class ASValidator {
         }
     }
     
+    public func resetAllValue() {
+        svalidatorEntities.forEach { $0.resetValue() }
+    }
+    
     @objc public func invalidAction() {
-        let validate = self.validate(firstInvalidAttemptNumber == 0)
+        let validate = publicValidationHandler(firstInvalidAttemptNumber == 0)
         if firstInvalidAttemptNumber == 0, let isValid = validate?.isValid(), let views = invalidActionView {
             for (_, view) in views.enumerated() {
                 let view = view as? UIView
@@ -99,5 +104,29 @@ extension UITextField {
                 rules: rules
             ))
         }
+    }
+}
+
+extension ASValidator {
+    @objc public func hideKeyboardWhenTappedAround(_ view: UIView) {
+        let tapGesture = ASVTapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
+        tapGesture.setFirstObject(view)
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc public func hideKeyboard(_ sender: ASVTapGestureRecognizer) {
+        if let view = sender.getFirstObject() as? UIView {
+            view.endEditing(true)
+        }
+    }
+}
+
+public class ASVTapGestureRecognizer: UITapGestureRecognizer {
+    var firstObject: Any?
+    func setFirstObject(_ sender: Any?) {
+        self.firstObject = sender
+    }
+    func getFirstObject() -> Any? {
+        return self.firstObject
     }
 }
