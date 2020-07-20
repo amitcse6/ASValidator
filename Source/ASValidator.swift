@@ -22,8 +22,8 @@ public class ASValidator {
         svalidatorEntities.append(svalidatorEntity)
     }
     
-    // MARK: - Public Validation Handler
-    public func publicValidationHandler(_ isShowError: Bool? = nil) -> ASValidation? {
+    // MARK: - Target Validation Handler
+    public func targetValidationHandler(_ isShowError: Bool? = nil) -> ASValidation? {
         let asvalidation = ASValidation()
         for (_, entitie) in svalidatorEntities.enumerated() {
             let result = entitie.validate(isShowError ?? true)
@@ -36,7 +36,7 @@ public class ASValidator {
         if firstInvalidAttemptNumber > 0 {
             self.firstInvalidAttemptNumber = self.firstInvalidAttemptNumber - 1
         }
-        let asvalidation = publicValidationHandler(true)
+        let asvalidation = targetValidationHandler(true)
         return asvalidation
     }
     
@@ -44,7 +44,7 @@ public class ASValidator {
         self.invalidActionView = invalidActionView
         self.invalidActionViewDisable = invalidActionViewDisable
         if let invalidActionViewDisable = invalidActionViewDisable, invalidActionViewDisable {
-            invalidAction()
+            publicValidationHandler()
         }
     }
     
@@ -63,8 +63,9 @@ public class ASValidator {
         svalidatorEntities.forEach { $0.resetValue() }
     }
     
-    @objc public func invalidAction() {
-        let validate = publicValidationHandler(firstInvalidAttemptNumber == 0)
+    // MARK: - Public Validation Handler
+    @objc public func publicValidationHandler() {
+        let validate = targetValidationHandler(firstInvalidAttemptNumber == 0)
         if firstInvalidAttemptNumber == 0, let isValid = validate?.isValid(), let views = invalidActionView {
             for (_, view) in views.enumerated() {
                 let view = view as? UIView
