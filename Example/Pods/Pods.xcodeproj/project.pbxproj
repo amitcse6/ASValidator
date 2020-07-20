@@ -24,6 +24,8 @@
 		2887C6B524AB42BE0037DFC2 /* ASValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887C6B224AB42BD0037DFC2 /* ASValidation.swift */; };
 		2887C6B624AB42BE0037DFC2 /* ASVLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887C6B324AB42BD0037DFC2 /* ASVLengthRule.swift */; };
 		2887C6B724AB42BE0037DFC2 /* ASVMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887C6B424AB42BE0037DFC2 /* ASVMath.swift */; };
+		289FA6BC24C5A1020003BA8B /* ASVEqualRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289FA6BB24C5A1020003BA8B /* ASVEqualRule.swift */; };
+		289FA6BE24C5A2E40003BA8B /* ASVNotEqualRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289FA6BD24C5A2E40003BA8B /* ASVNotEqualRule.swift */; };
 		47A914DA7C98A212439529AC3862BDC4 /* Pods-ASValidator_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28B9B673C15A465D055E6EE52A427CF4 /* Pods-ASValidator_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52C305CF7CD86946A3BB39DF713CA334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		8ABE8B813E63D58AFBEB19CB037A4301 /* Pods-ASValidator_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC961F67475A3D5330AC3159DFF0141 /* Pods-ASValidator_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,6 +69,8 @@
 		2887C6B224AB42BD0037DFC2 /* ASValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASValidation.swift; sourceTree = "<group>"; };
 		2887C6B324AB42BD0037DFC2 /* ASVLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVLengthRule.swift; sourceTree = "<group>"; };
 		2887C6B424AB42BE0037DFC2 /* ASVMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVMath.swift; sourceTree = "<group>"; };
+		289FA6BB24C5A1020003BA8B /* ASVEqualRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASVEqualRule.swift; sourceTree = "<group>"; };
+		289FA6BD24C5A2E40003BA8B /* ASVNotEqualRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASVNotEqualRule.swift; sourceTree = "<group>"; };
 		28B9B673C15A465D055E6EE52A427CF4 /* Pods-ASValidator_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ASValidator_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2BB7320667BBBE97B8B448485FD9352E /* ASValidator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASValidator-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -166,6 +170,8 @@
 				2873AA4424AA290900E5C0A9 /* ASVMinLengthRule.swift */,
 				2873AA4024AA290900E5C0A9 /* ASVRequiredRule.swift */,
 				2873AA4224AA290900E5C0A9 /* ASVResult.swift */,
+				289FA6BB24C5A1020003BA8B /* ASVEqualRule.swift */,
+				289FA6BD24C5A2E40003BA8B /* ASVNotEqualRule.swift */,
 				2873AA4824AA290900E5C0A9 /* ASVRule.swift */,
 			);
 			path = Source;
@@ -427,7 +433,9 @@
 				2873AA4F24AA290900E5C0A9 /* ASVError.swift in Sources */,
 				2873AA4E24AA290900E5C0A9 /* ASVMaxLengthRule.swift in Sources */,
 				2873AA5124AA290900E5C0A9 /* ASVRule.swift in Sources */,
+				289FA6BE24C5A2E40003BA8B /* ASVNotEqualRule.swift in Sources */,
 				2873AA4B24AA290900E5C0A9 /* ASVResult.swift in Sources */,
+				289FA6BC24C5A1020003BA8B /* ASVEqualRule.swift in Sources */,
 				2859AD1F24BDDE5B006BDAFE /* ASVEqualFieldRule.swift in Sources */,
 				2887C6B724AB42BE0037DFC2 /* ASVMath.swift in Sources */,
 			);
