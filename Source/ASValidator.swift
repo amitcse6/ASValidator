@@ -74,11 +74,11 @@ public class ASValidator {
         }
     }
     
-    public func resetAllValue() {
+    @objc public func resetAllValue() {
         svalidatorEntities.forEach { $0.resetValue() }
     }
     
-    public func applyForError() {
+    @objc public func applyForError() {
         applyForError(true)
     }
     
