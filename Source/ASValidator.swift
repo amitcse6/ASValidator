@@ -78,6 +78,10 @@ public class ASValidator {
         svalidatorEntities.forEach { $0.resetValue() }
     }
     
+    public func applyForError() {
+        applyForError(true)
+    }
+    
     // MARK: - Public Validation Handler
     @objc public func publicValidationHandler() {
         let validate = targetValidationHandler(firstInvalidAttemptNumber == 0)
