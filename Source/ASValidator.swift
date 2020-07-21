@@ -13,10 +13,16 @@ public class ASValidator {
     private var svalidatorEntities: [ASValidatorEntity] = [ASValidatorEntity]()
     private var invalidActionView: [Any?]?
     private var invalidActionViewDisable: Bool?
+    private var firstInvalidAttemptNumberStore: Int = 0
     private var firstInvalidAttemptNumber: Int = 0
     
     public init() {
     }
+    
+    public init(_ ignoreInitApplyNumber: Int) {
+        ignoreInitApplyWithNumber(ignoreInitApplyNumber)
+    }
+    
     
     func append(_ svalidatorEntity: ASValidatorEntity) {
         svalidatorEntities.append(svalidatorEntity)
@@ -37,9 +43,18 @@ public class ASValidator {
             self.firstInvalidAttemptNumber = self.firstInvalidAttemptNumber - 1
         }
         let asvalidation = targetValidationHandler(true)
+        if let isValid = asvalidation?.isValid(), isValid {
+            firstInvalidAttemptNumber = firstInvalidAttemptNumberStore
+        }
         return asvalidation
     }
     
+    @discardableResult
+    public func applyForError(_ ignoreInitTime: Bool) -> ASValidation? {
+        let asvalidation = targetValidationHandler(!ignoreInitTime)
+        return asvalidation
+    }
+
     public func invalidDisableViews(_ invalidActionView: [Any?]?, _ invalidActionViewDisable: Bool? = false) {
         self.invalidActionView = invalidActionView
         self.invalidActionViewDisable = invalidActionViewDisable
@@ -48,10 +63,10 @@ public class ASValidator {
         }
     }
     
-    public func ignoreFirstInvalidAttemptNumber(_ number: Int) {
-        self.firstInvalidAttemptNumber = number
+    public func ignoreInitApplyWithNumber(_ ignoreInitApplyNumber: Int = 1) {
+        self.firstInvalidAttemptNumberStore = ignoreInitApplyNumber
+        self.firstInvalidAttemptNumber = ignoreInitApplyNumber
     }
-    
     
     @objc public func errorResetAll() {
         for (_, entitie) in svalidatorEntities.enumerated() {

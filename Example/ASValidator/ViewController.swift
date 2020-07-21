@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        asValidator.ignoreInitApplyWithNumber()
+        
         usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
 extension ViewController: UITextFieldDelegate {
     @available(iOS 10.0, *)
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        asValidator.errorResetAll()
+        asValidator.applyForError(true)
     }
 }
 
