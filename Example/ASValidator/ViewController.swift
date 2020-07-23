@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        asValidator.ignoreInitApplyWithNumber()
+        asValidator.ignoreErrorAttempt()
         
         usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
         usernameTextField.placeholder = "Enter Email Address"
