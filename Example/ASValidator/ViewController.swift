@@ -28,10 +28,12 @@ class ViewController: UIViewController {
         usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
+        usernameTextField.text = "amit@gmail.com"
         
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
+        passwordTextField.text = "amit@gmail.com"
         
         asValidator.invalidDisableViews([submitButton])
         
@@ -46,7 +48,7 @@ class ViewController: UIViewController {
         let validate = asValidator.apply()
         if let validate = validate, validate.isValid() {
             // MARK: - Validation Success
-            print("Validation Success")
+            print("Validation Success ")
         }else{
             // MARK: - Validation Fail
             print("Validation Fail")

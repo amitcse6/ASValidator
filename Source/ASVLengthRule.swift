@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class ASVLengthRule: ASVRule {
     private var errorMsg: String?
     private var length: Int
