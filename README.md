@@ -12,13 +12,16 @@ Screenshots
 ## Example
 
 ```swift
+
 import SValidator
 
 // Validation
 let svalidator = ASValidator()
 textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
 
-// for efficiently use
+```
+## Example for Better Use
+```swift
 extension UITextField {
     func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
         register(
