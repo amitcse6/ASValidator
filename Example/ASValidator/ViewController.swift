@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var usernameErrorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordErrorLabel: UILabel!
-    
+    @IBOutlet weak var buttonRef: UIButton!
+    @IBOutlet weak var imageViewRef: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     
     private let asValidator = ASValidator()
@@ -25,15 +26,24 @@ class ViewController: UIViewController {
         
         asValidator.ignoreErrorAttempt()
         
+        imageViewRef.register(asValidator, nil, [ASVImageRequiredRule("Image Require")], "Image Ref")
+        imageViewRef.image = UIImage(named: "avatar")
+        
+        buttonRef.register(asValidator, nil, [ASVRequiredRule()], "Button Ref")
+        buttonRef.setTitle("Button Title", for: .normal)
+        
         usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
+        usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
+        passwordTextField.text = "11111111"
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
         
         asValidator.invalidDisableViews([submitButton])
+        asValidator.ignoreErrorAttempt(3)
         
         asValidator.hideKeyboardWhenTappedAround(view)
     }
@@ -50,6 +60,7 @@ class ViewController: UIViewController {
         }else{
             // MARK: - Validation Fail
             print("Validation Fail")
+            validate?.showErrorLog()
         }
     }
     
@@ -61,21 +72,3 @@ extension ViewController: UITextFieldDelegate {
         asValidator.applyForError(true)
     }
 }
-
-extension UITextField {
-    func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
-        registerASVTF(
-            svalidator: svalidator,
-            field: self,
-            name: name,
-            errorLabel: errorLabel,
-            errorBorderView: self,
-            errorBorderColor: UIColor.red.cgColor,
-            normalBorderColor: UIColor.lightGray.cgColor,
-            defaultErrorMsg: defaultErrorMsg,
-            borderWidth: 1.0,
-            rules: rules
-        )
-    }
-}
-

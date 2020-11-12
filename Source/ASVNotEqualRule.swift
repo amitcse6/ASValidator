@@ -16,8 +16,8 @@ public class ASVNotEqualRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: String?) -> ASVError? {
-        if let value = value?.trimmingCharacters(in: .whitespaces), let values = values, value.count > 0 {
+    public func validate(_ value: Any?) -> ASVError? {
+        if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), let values = values, value.count > 0 {
             let _values = values.filter({ value != $0 })
             if _values.count == values.count {
                 return nil

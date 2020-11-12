@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class ASValidatorEntity {
-    private var field: UITextField?
+    private var field: Any?
     private var name: String?
     private var errorLabel: UILabel?
     private var errorBorderView: UIView?
@@ -21,7 +21,7 @@ public class ASValidatorEntity {
     private var rules: [ASVRule]?
     
     init(
-        field: UITextField?,
+        field: AnyObject?,
         name: String?,
         errorLabel: UILabel?,
         errorBorderView: UIView?,
@@ -46,8 +46,12 @@ public class ASValidatorEntity {
         let svresult = ASVResult()
         if let rules = rules {
             for (_, rule) in rules.enumerated() {
-                if let error = rule.validate(field?.text) {
-                    svresult.sverrors.append(error)
+                if let field = field as? UITextField, let error = rule.validate(field.text) {
+                    svresult.errors.append(error)
+                }else if let field = field as? UIButton, let error = rule.validate(field.titleLabel?.text) {
+                    svresult.errors.append(error)
+                }else if let field = field as? UIImageView, let error = rule.validate(field.image) {
+                    svresult.errors.append(error)
                 }
             }
         }
@@ -58,7 +62,7 @@ public class ASValidatorEntity {
     }
     
     func getErrorMessage(_ svresult: ASVResult) -> String? {
-        for sverror in svresult.sverrors {
+        for sverror in svresult.errors {
             if let _errorMsg = sverror.errorMsg {
                 var errorMsg = (defaultErrorMsg ?? "Invalid \(name ?? "input")")
                 errorMsg = "\(ASVMath.checkString(name))\(_errorMsg)"
@@ -81,7 +85,11 @@ public class ASValidatorEntity {
     }
     
     func resetValue() {
-        field?.text = ""
+        if let field = field as? UITextField {
+            field.text = ""
+        }else if let field = field as? UIButton {
+            field.setTitle("", for: .normal)
+        }
     }
 }
 

@@ -15,8 +15,8 @@ public class ASVRequiredRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: String?) -> ASVError? {
-        if let value = value?.trimmingCharacters(in: .whitespaces), value.count > 0 {
+    public func validate(_ value: Any?) -> ASVError? {
+        if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), value.count > 0 {
             return nil
         }
         return ASVError(errorMsg: errorMsg ?? "required")

@@ -30,8 +30,9 @@ public class ASValidator {
     // MARK: - Target Validation Handler
     public func targetValidationHandler(_ isShowError: Bool? = nil) -> ASValidation? {
         let asvalidation = ASValidation()
-        for (_, entitie) in svalidatorEntities.enumerated() {
-            let result = entitie.validate(isShowError ?? true)
+        for (_, entity) in svalidatorEntities.enumerated() {
+            let result = entity.validate(isShowError ?? true)
+            result.entity = entity
             asvalidation.results.append(result)
         }
         return asvalidation
@@ -49,6 +50,8 @@ public class ASValidator {
         }
         return asvalidation
     }
+    
+    
     
     @discardableResult
     public func applyForError(_ ignoreInitTime: Bool) -> ASValidation? {
@@ -95,35 +98,6 @@ public class ASValidator {
                     view?.isHidden = !isValid ? true : false
                 }
             }
-        }
-    }
-}
-
-extension UITextField {
-    public func registerASVTF(
-        svalidator: ASValidator?,
-        field: UITextField?,
-        name: String?,
-        errorLabel: UILabel?,
-        errorBorderView: UIView?,
-        errorBorderColor: CGColor?,
-        normalBorderColor: CGColor?,
-        defaultErrorMsg: String?,
-        borderWidth: CGFloat?,
-        rules: [ASVRule]?
-    ) {
-        if let svalidator = svalidator {
-            svalidator.append(ASValidatorEntity(
-                field: field,
-                name: name,
-                errorLabel: errorLabel,
-                errorBorderView: errorBorderView,
-                errorBorderColor: errorBorderColor,
-                normalBorderColor: normalBorderColor,
-                defaultErrorMsg: defaultErrorMsg,
-                borderWidth: borderWidth,
-                rules: rules
-            ))
         }
     }
 }

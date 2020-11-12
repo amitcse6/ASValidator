@@ -13,10 +13,20 @@ public class ASValidation {
     
     public func isValid() -> Bool {
         for result in results {
-            if result.sverrors.count != 0 {
+            if result.errors.count != 0 {
                 return false
             }
         }
         return true
+    }
+    
+    public func showErrorLog() {
+        results.forEach({ (result) in
+            result.errors.forEach { (error) in
+                if let errorMsg = error.errorMsg {
+                    print(errorMsg)
+                }
+            }
+        })
     }
 }

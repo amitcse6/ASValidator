@@ -32,6 +32,9 @@
 		8ABE8B813E63D58AFBEB19CB037A4301 /* Pods-ASValidator_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC961F67475A3D5330AC3159DFF0141 /* Pods-ASValidator_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C73642C52F3F6331583886DA35F42FAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		C871F5ABDECFF94F46572671678C5034 /* ASValidator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BB7320667BBBE97B8B448485FD9352E /* ASValidator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D66D5A3C255D4E4700E1D811 /* ASVImageRequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D5A39255D4E4700E1D811 /* ASVImageRequiredRule.swift */; };
+		D66D5A3D255D4E4700E1D811 /* ASValidator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D5A3A255D4E4700E1D811 /* ASValidator+Extension.swift */; };
+		D66D5A3E255D4E4700E1D811 /* ASValidator+EasyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D5A3B255D4E4700E1D811 /* ASValidator+EasyExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,9 @@
 		B857E455D0640F524A708945BB10C1C6 /* ASValidator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ASValidator.debug.xcconfig; sourceTree = "<group>"; };
 		BFFC90CF4DD90F335E459C6D16C92C4A /* Pods-ASValidator_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ASValidator_Example.modulemap"; sourceTree = "<group>"; };
 		D1FF0B995A175F48CCFA99281BEE21E4 /* Pods-ASValidator_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ASValidator_Example-frameworks.sh"; sourceTree = "<group>"; };
+		D66D5A39255D4E4700E1D811 /* ASVImageRequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVImageRequiredRule.swift; sourceTree = "<group>"; };
+		D66D5A3A255D4E4700E1D811 /* ASValidator+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASValidator+Extension.swift"; sourceTree = "<group>"; };
+		D66D5A3B255D4E4700E1D811 /* ASValidator+EasyExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASValidator+EasyExtension.swift"; sourceTree = "<group>"; };
 		E68EFC0B1FEFCE71321E0AC1EAB1EF3B /* Pods-ASValidator_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ASValidator_Example-Info.plist"; sourceTree = "<group>"; };
 		F17CB1304C6A6466EB6C1AED006E9403 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F1BDDAEE4D900CB7CD86D70D3E4EFD1C /* Pods_ASValidator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASValidator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +166,9 @@
 		2873AA3F24AA28D200E5C0A9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D66D5A3B255D4E4700E1D811 /* ASValidator+EasyExtension.swift */,
+				D66D5A3A255D4E4700E1D811 /* ASValidator+Extension.swift */,
+				D66D5A39255D4E4700E1D811 /* ASVImageRequiredRule.swift */,
 				28819E86250A7BD700D68C98 /* ASVNotEqualFieldRule.swift */,
 				2859AD1E24BDDE5B006BDAFE /* ASVEqualFieldRule.swift */,
 				2887C6B224AB42BD0037DFC2 /* ASValidation.swift */,
@@ -434,6 +443,8 @@
 				2873AA4A24AA290900E5C0A9 /* ASValidator.swift in Sources */,
 				2873AA5024AA290900E5C0A9 /* ASValidatorEntity.swift in Sources */,
 				2873AA4F24AA290900E5C0A9 /* ASVError.swift in Sources */,
+				D66D5A3C255D4E4700E1D811 /* ASVImageRequiredRule.swift in Sources */,
+				D66D5A3E255D4E4700E1D811 /* ASValidator+EasyExtension.swift in Sources */,
 				2873AA4E24AA290900E5C0A9 /* ASVMaxLengthRule.swift in Sources */,
 				2873AA5124AA290900E5C0A9 /* ASVRule.swift in Sources */,
 				289FA6BE24C5A2E40003BA8B /* ASVNotEqualRule.swift in Sources */,
@@ -442,6 +453,7 @@
 				28819E87250A7BD700D68C98 /* ASVNotEqualFieldRule.swift in Sources */,
 				2859AD1F24BDDE5B006BDAFE /* ASVEqualFieldRule.swift in Sources */,
 				2887C6B724AB42BE0037DFC2 /* ASVMath.swift in Sources */,
+				D66D5A3D255D4E4700E1D811 /* ASValidator+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

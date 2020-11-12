@@ -17,8 +17,8 @@ public class ASVLengthRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: String?) -> ASVError? {
-        if let value = value?.trimmingCharacters(in: .whitespaces), value.count >= length {
+    public func validate(_ value: Any?) -> ASVError? {
+        if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), value.count >= length {
             return nil
         }
         return ASVError(errorMsg: errorMsg ?? "required minimum \(length) character\(ASVMath.getSigOrPlu(length))") 

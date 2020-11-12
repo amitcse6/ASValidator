@@ -9,5 +9,6 @@
 import Foundation
 
 public class ASVResult {
-    public var sverrors: [ASVError] = [ASVError]()
+    public var errors: [ASVError] = [ASVError]()
+    public var entity: ASValidatorEntity?
 }

@@ -17,8 +17,8 @@ public class ASVNotEqualFieldRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: String?) -> ASVError? {
-        if let value = value, let field = field, value != field.text {
+    public func validate(_ value: Any?) -> ASVError? {
+        if let value = value as? String, let field = field, value != field.text {
             return nil
         }
         return ASVError(errorMsg: errorMsg ?? "match")

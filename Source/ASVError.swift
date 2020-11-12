@@ -9,7 +9,7 @@
 import Foundation
 
 public class ASVError { 
-    var errorMsg: String?
+    public var errorMsg: String?
     
     public init(errorMsg: String?) {
         self.errorMsg = errorMsg

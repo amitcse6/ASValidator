@@ -10,5 +10,5 @@
 import Foundation
 
 public protocol ASVRule {
-    func validate(_ value: String?) -> ASVError?
+    func validate(_ value: Any?) -> ASVError?
 }

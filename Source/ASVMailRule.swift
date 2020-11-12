@@ -15,10 +15,10 @@ public class ASVMailRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: String?) -> ASVError? {
+    public func validate(_ value: Any?) -> ASVError? {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        if let value = value?.trimmingCharacters(in: .whitespaces), emailPred.evaluate(with: value)  {
+        if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), emailPred.evaluate(with: value)  {
             return nil
         }
         return ASVError(errorMsg: errorMsg ?? "is not correct")
