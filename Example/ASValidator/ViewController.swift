@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         
         asValidator.ignoreErrorAttempt()
         
+        
         imageViewRef.register(asValidator, nil, [ASVImageRequiredRule("Image Require")], "Image Ref")
         imageViewRef.image = UIImage(named: "avatar")
         

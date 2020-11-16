@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class ASVImageRequiredRule: ASVRule {
     var errorMsg: String?
@@ -14,10 +15,10 @@ public class ASVImageRequiredRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: Any?) -> ASVError? {
+    public func validate(_ value: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let _ = value as? UIImage {
             return nil
         }
-        return ASVError(errorMsg: errorMsg ?? "matches")
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") matches")
     }
 }

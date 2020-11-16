@@ -17,10 +17,10 @@ public class ASVMaxLengthRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: Any?) -> ASVError? {
+    public func validate(_ value: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), value.count <= length {
             return nil
         }
-        return ASVError(errorMsg: errorMsg ?? "required maximum \(length) character\(ASVMath.getSigOrPlu(length)) long") 
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") required maximum \(length) character\(ASVMath.getSigOrPlu(length)) long") 
     }
 }

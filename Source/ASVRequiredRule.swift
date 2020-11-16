@@ -15,10 +15,10 @@ public class ASVRequiredRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: Any?) -> ASVError? {
+    public func validate(_ value: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), value.count > 0 {
             return nil
         }
-        return ASVError(errorMsg: errorMsg ?? "required")
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") required")
     }
 }

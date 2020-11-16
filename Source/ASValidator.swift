@@ -15,6 +15,7 @@ public class ASValidator {
     private var invalidActionViewDisable: Bool?
     private var _numberOfErrorAttempt: Int = 0
     private var numberOfErrorAttempt: Int = 0
+    private var errorBorderHilighted = true
     
     public init() {
     }
@@ -65,6 +66,15 @@ public class ASValidator {
         if let invalidActionViewDisable = invalidActionViewDisable, invalidActionViewDisable {
             publicValidationHandler()
         }
+    }
+    
+    
+    public func setErrorBorderHilight(_ hilighted: Bool) {
+        self.errorBorderHilighted = hilighted
+    }
+    
+    public func getErrorBorderHilight() -> Bool {
+        return errorBorderHilighted
     }
     
     public func ignoreErrorAttempt(_ number: Int = 1) {

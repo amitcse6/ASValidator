@@ -17,10 +17,10 @@ public class ASVNotEqualFieldRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: Any?) -> ASVError? {
+    public func validate(_ value: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let value = value as? String, let field = field, value != field.text {
             return nil
         }
-        return ASVError(errorMsg: errorMsg ?? "match")
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") match")
     }
 }

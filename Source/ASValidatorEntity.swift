@@ -46,11 +46,11 @@ public class ASValidatorEntity {
         let svresult = ASVResult()
         if let rules = rules {
             for (_, rule) in rules.enumerated() {
-                if let field = field as? UITextField, let error = rule.validate(field.text) {
+                if let field = field as? UITextField, let error = rule.validate(field.text, name, defaultErrorMsg) {
                     svresult.errors.append(error)
-                }else if let field = field as? UIButton, let error = rule.validate(field.titleLabel?.text) {
+                }else if let field = field as? UIButton, let error = rule.validate(field.titleLabel?.text, name, defaultErrorMsg) {
                     svresult.errors.append(error)
-                }else if let field = field as? UIImageView, let error = rule.validate(field.image) {
+                }else if let field = field as? UIImageView, let error = rule.validate(field.image, name, defaultErrorMsg) {
                     svresult.errors.append(error)
                 }
             }
@@ -61,11 +61,18 @@ public class ASValidatorEntity {
         return svresult
     }
     
+    func getErrorMessage(_ errorMsg: String?) -> String? {
+        if var errorMsg = errorMsg {
+            errorMsg = (defaultErrorMsg ?? "Invalid \(name ?? "input")")
+            errorMsg = "\(ASVMath.checkString(name))\(errorMsg)"
+            return errorMsg
+        }
+        return nil
+    }
+    
     func getErrorMessage(_ svresult: ASVResult) -> String? {
         for sverror in svresult.errors {
-            if let _errorMsg = sverror.errorMsg {
-                var errorMsg = (defaultErrorMsg ?? "Invalid \(name ?? "input")")
-                errorMsg = "\(ASVMath.checkString(name))\(_errorMsg)"
+            if let errorMsg = getErrorMessage(sverror.errorMsg) {
                 return errorMsg
             }
         }

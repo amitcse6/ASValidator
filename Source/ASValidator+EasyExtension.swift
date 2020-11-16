@@ -16,10 +16,10 @@ extension UITextField {
             name: name,
             errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: UIColor.red.cgColor,
-            normalBorderColor: UIColor.lightGray.cgColor,
+            errorBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.red.cgColor : nil,
+            normalBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
-            borderWidth: 1.0,
+            borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules
         )
     }
@@ -33,10 +33,10 @@ extension UIButton {
             name: name,
             errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: UIColor.red.cgColor,
-            normalBorderColor: UIColor.lightGray.cgColor,
+            errorBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.red.cgColor : nil,
+            normalBorderColor:svalidator?.getErrorBorderHilight() ?? false ?  UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
-            borderWidth: 1.0,
+            borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules
         )
     }
@@ -50,10 +50,10 @@ extension UIImageView {
             name: name,
             errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: UIColor.red.cgColor,
-            normalBorderColor: UIColor.lightGray.cgColor,
+            errorBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.red.cgColor : nil,
+            normalBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
-            borderWidth: 1.0,
+            borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules
         )
     }

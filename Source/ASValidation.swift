@@ -20,6 +20,25 @@ public class ASValidation {
         return true
     }
     
+    public func getError() -> String? {
+        for result in results {
+            for error in result.errors {
+                return error.errorMsg
+            }
+        }
+        return nil
+    }
+    
+    public func getErrors() -> [String?] {
+        var errors = [String?]()
+        for result in results {
+            for error in result.errors {
+                errors.append(error.errorMsg)
+            }
+        }
+        return errors
+    }
+    
     public func showErrorLog() {
         results.forEach({ (result) in
             result.errors.forEach { (error) in

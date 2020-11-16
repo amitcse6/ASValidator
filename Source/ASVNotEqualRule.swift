@@ -16,13 +16,13 @@ public class ASVNotEqualRule: ASVRule {
         self.errorMsg = errorMsg
     }
     
-    public func validate(_ value: Any?) -> ASVError? {
+    public func validate(_ value: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let value = (value as? String)?.trimmingCharacters(in: .whitespaces), let values = values, value.count > 0 {
             let _values = values.filter({ value != $0 })
             if _values.count == values.count {
                 return nil
             }
         }
-        return ASVError(errorMsg: errorMsg ?? "matches")
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") matches")
     }
 }
