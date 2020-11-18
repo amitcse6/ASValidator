@@ -10,18 +10,15 @@ Screenshots
 ![ASValidator Screenshots](asvalidator_screenshot.gif)
 
 ## Example
-
 ```swift
-
 import SValidator
 
 // Validation
 let svalidator = ASValidator()
-textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
-
+textField.register(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(nil), ASVMinLengthRule(2), ASVMaxLengthRule(5, nil)])
 ```
-## Example
 
+## Action
 ```swift
 let validate = asValidator.apply()
 if let validate = validate, validate.isValid() {
@@ -31,9 +28,11 @@ if let validate = validate, validate.isValid() {
 }
 ```
 
-
 ## Example for Better Use
+
 ```swift
+textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
+
 extension UITextField {
     func addField(svalidator: ASValidator?, defaultErrorMsg: String?, rules: [ASVRule]?) {
         register(
@@ -52,11 +51,12 @@ extension UITextField {
 ```
 
 ## Validation Rule
-
 ```swift
-textField.register(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(nil), ASVMinLengthRule(2), ASVMaxLengthRule(5, nil)])
+ASVRequiredRule(nil)
+ASVMinLengthRule(2)
+ASVMaxLengthRule(5, nil)
+...
 ```
-
 
 ## Requirements
 
