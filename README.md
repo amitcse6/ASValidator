@@ -20,6 +20,18 @@ let svalidator = ASValidator()
 textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
 
 ```
+## Example
+
+```swift
+let validate = asValidator.apply()
+if let validate = validate, validate.isValid() {
+    // MARK: - Validation Success
+}else{
+    // MARK: - Validation Fail
+}
+```
+
+
 ## Example for Better Use
 ```swift
 extension UITextField {
