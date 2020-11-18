@@ -9,17 +9,16 @@ Screenshots
 ---------
 ![ASValidator Screenshots](asvalidator_screenshot.gif)
 
-## Example
+## Example 1:
 ```swift
+// Import
 import SValidator
 
-// Validation
+// Add A Validation
 let svalidator = ASValidator()
 textField.register(svalidator: validator, defaultErrorMsg: nil, rules: [ASVRequiredRule(nil), ASVMinLengthRule(2), ASVMaxLengthRule(5, nil)])
-```
 
-## Action
-```swift
+// Validation Check
 let validate = asValidator.apply()
 if let validate = validate, validate.isValid() {
     // MARK: - Validation Success
@@ -28,7 +27,8 @@ if let validate = validate, validate.isValid() {
 }
 ```
 
-## Example for Effeciently Use
+
+## Example 2: for Effeciently Use
 
 ```swift
 textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
