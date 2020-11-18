@@ -28,7 +28,7 @@ if let validate = validate, validate.isValid() {
 }
 ```
 
-## Example for Better Use
+## Example for Effeciently Use
 
 ```swift
 textField.addField(svalidator: svalidator, defaultErrorMsg: nil, rules: [ASVRequiredRule(errorMsg: nil)])
