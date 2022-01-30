@@ -19,6 +19,7 @@ public class ASValidatorEntity {
     private var defaultErrorMsg: String?
     private var borderWidth: CGFloat?
     private var rules: [ASVRule]?
+    private var errorProps: ASVErrorProps?
     
     init(
         field: AnyObject?,
@@ -29,7 +30,8 @@ public class ASValidatorEntity {
         normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat? = 1.0,
-        rules: [ASVRule]?
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?
     ) {
         self.field = field
         self.name = name
@@ -40,6 +42,7 @@ public class ASValidatorEntity {
         self.defaultErrorMsg = defaultErrorMsg
         self.borderWidth = borderWidth
         self.rules = rules
+        self.errorProps = errorProps
     }
     
     func validate(_ isShowError: Bool) -> ASVResult {
@@ -106,6 +109,14 @@ extension ASValidatorEntity {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
             errorBorderView.layer.borderColor = errorBorderColor
         }
+        if let errorProps = errorProps {
+            if let view = errorProps.view, let errorBorderColor = errorProps.errorBorderColor {
+                view.layer.borderColor = errorBorderColor.cgColor
+            }
+            if let label = errorProps.label, let errorErrorTextColor = errorProps.errorErrorTextColor {
+                label.textColor = errorErrorTextColor
+            }
+        }
         if let errorLabel = errorLabel {
             errorLabel.text = errorMsg
         }
@@ -115,6 +126,14 @@ extension ASValidatorEntity {
         if let errorBorderView = errorBorderView {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
             errorBorderView.layer.borderColor = normalBorderColor
+        }
+        if let errorProps = errorProps {
+            if let view = errorProps.view, let normalBorderColor = errorProps.normalBorderColor {
+                view.layer.borderColor = normalBorderColor.cgColor
+            }
+            if let label = errorProps.label, let normalErrorTextColor = errorProps.normalErrorTextColor {
+                label.textColor = normalErrorTextColor
+            }
         }
         if let errorLabel = errorLabel {
             errorLabel.text = errorMsg

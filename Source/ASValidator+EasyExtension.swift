@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
         registerASVTF(
             svalidator: svalidator,
             field: self,
@@ -20,13 +20,14 @@ extension UITextField {
             normalBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
-            rules: rules
+            rules: rules,
+            errorProps: errorProps
         )
     }
 }
 
 extension UIButton {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
         registerASVTF(
             svalidator: svalidator,
             field: self,
@@ -37,13 +38,14 @@ extension UIButton {
             normalBorderColor:svalidator?.getErrorBorderHilight() ?? false ?  UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
-            rules: rules
+            rules: rules,
+            errorProps: errorProps
         )
     }
 }
 
 extension UIImageView {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil) {
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
         registerASVTF(
             svalidator: svalidator,
             field: self,
@@ -54,7 +56,8 @@ extension UIImageView {
             normalBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
-            rules: rules
+            rules: rules,
+            errorProps: errorProps
         )
     }
 }

@@ -19,7 +19,8 @@ extension UITextField {
         normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
-        rules: [ASVRule]?
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?
     ) {
         if let svalidator = svalidator {
             svalidator.append(ASValidatorEntity(
@@ -31,7 +32,8 @@ extension UITextField {
                 normalBorderColor: normalBorderColor,
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
-                rules: rules
+                rules: rules,
+                errorProps: errorProps
             ))
         }
     }
@@ -48,7 +50,8 @@ extension UIButton {
         normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
-        rules: [ASVRule]?
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?
     ) {
         if let svalidator = svalidator {
             svalidator.append(ASValidatorEntity(
@@ -60,7 +63,8 @@ extension UIButton {
                 normalBorderColor: normalBorderColor,
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
-                rules: rules
+                rules: rules,
+                errorProps: errorProps
             ))
         }
     }
@@ -77,7 +81,8 @@ extension UIImageView {
         normalBorderColor: CGColor?,
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
-        rules: [ASVRule]?
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?
     ) {
         if let svalidator = svalidator {
             svalidator.append(ASValidatorEntity(
@@ -89,7 +94,8 @@ extension UIImageView {
                 normalBorderColor: normalBorderColor,
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
-                rules: rules
+                rules: rules,
+                errorProps: errorProps
             ))
         }
     }
