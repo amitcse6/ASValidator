@@ -19,6 +19,8 @@ public class ASVErrorProps {
     public init(_ view: UIView?, _ label: UILabel?) {
         self.view = view
         self.label = label
+        normalBorderColor = UIColor(cgColor: view?.layer.borderColor ?? UIColor.white.cgColor)
+        normalErrorTextColor = label?.textColor
     }
     
     public init(_ view: UIView?, _ label: UILabel?, _ normalBorderColor: UIColor? = .white, _ errorBorderColor: UIColor? = .red, _ normalErrorTextColor: UIColor? = .white, _ errorErrorTextColor: UIColor? = .red) {

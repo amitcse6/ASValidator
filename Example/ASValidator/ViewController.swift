@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         buttonRef.register(asValidator, nil, [ASVRequiredRule()], "Button Ref")
         buttonRef.setTitle("Button Title", for: .normal)
         
+        usernameTextField.layer.borderColor = UIColor.gray.cgColor
         usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
         usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
