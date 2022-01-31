@@ -10,6 +10,7 @@ import Foundation
 
 public class ASVError { 
     public var errorMsg: String?
+    public var ruleIndex: Int!
     
     public init(errorMsg: String?) {
         self.errorMsg = errorMsg

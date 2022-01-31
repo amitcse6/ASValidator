@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         asValidator.ignoreErrorAttempt()
-        
+        asValidator.delegate = self
         
         imageViewRef.register(asValidator, nil, [ASVImageRequiredRule("Image Require")], "Image Ref")
         imageViewRef.image = UIImage(named: "avatar")
@@ -67,6 +67,14 @@ class ViewController: UIViewController {
         }
     }
     
+}
+
+extension ViewController: ASValidatorDelegate {
+    func validator(_ validator: ASValidator, _ field: Any?, _ result: ASVResult, _ isError: Bool) {
+        if let _ = field as? UITextField {
+            print("\(String(describing: result.errors.first?.ruleIndex))")
+        }
+    }
 }
 
 extension ViewController: UITextFieldDelegate {

@@ -52,12 +52,15 @@ public class ASValidatorEntity {
     func validate(_ isShowError: Bool) -> ASVResult {
         let svresult = ASVResult()
         if let rules = rules {
-            for (_, rule) in rules.enumerated() {
+            for (index, rule) in rules.enumerated() {
                 if let field = field as? UITextField, let error = rule.validate(field.text, name, defaultErrorMsg) {
+                    error.ruleIndex = index
                     svresult.errors.append(error)
                 }else if let field = field as? UIButton, let error = rule.validate(field.titleLabel?.text, name, defaultErrorMsg) {
+                    error.ruleIndex = index
                     svresult.errors.append(error)
                 }else if let field = field as? UIImageView, let error = rule.validate(field.image, name, defaultErrorMsg) {
+                    error.ruleIndex = index
                     svresult.errors.append(error)
                 }
             }
