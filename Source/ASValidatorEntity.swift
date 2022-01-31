@@ -45,6 +45,10 @@ public class ASValidatorEntity {
         self.errorProps = errorProps
     }
     
+    public func getField() -> Any? {
+        return field
+    }
+    
     func validate(_ isShowError: Bool) -> ASVResult {
         let svresult = ASVResult()
         if let rules = rules {

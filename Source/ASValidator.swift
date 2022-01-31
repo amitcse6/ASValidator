@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+public protocol ASValidatorDelegate: AnyObject {
+    func validator(_ validator: ASValidator, _ field: Any?, _ result: ASVResult, _ isError: Bool)
+}
+
 public class ASValidator {
     private var svalidatorEntities: [ASValidatorEntity] = [ASValidatorEntity]()
     private var invalidActionView: [Any?]?
@@ -16,6 +20,8 @@ public class ASValidator {
     private var _numberOfErrorAttempt: Int = 0
     private var numberOfErrorAttempt: Int = 0
     private var errorBorderHilighted = true
+    
+    public weak var delegate: ASValidatorDelegate?
     
     public init() {
     }
@@ -35,6 +41,7 @@ public class ASValidator {
             let result = entity.validate(isShowError ?? true)
             result.entity = entity
             asvalidation.results.append(result)
+            delegate?.validator(self, entity.getField(), result, result.errors.count > 0)
         }
         return asvalidation
     }

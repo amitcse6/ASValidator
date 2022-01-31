@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
+        usernameTextField.layer.cornerRadius = 10
         
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
         passwordTextField.text = "11111111"
