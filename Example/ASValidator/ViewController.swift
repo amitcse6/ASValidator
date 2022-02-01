@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        asValidator.removeAllEntities()
         asValidator.ignoreErrorAttempt()
         asValidator.delegate = self
         

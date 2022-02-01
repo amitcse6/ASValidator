@@ -89,6 +89,12 @@ public class ASValidator {
         self.numberOfErrorAttempt = number
     }
     
+    public func removeAllEntities() {
+        self.svalidatorEntities.removeAll()
+        self.svalidatorEntities = []
+    }
+    
+    
     @objc public func errorResetAll() {
         for (_, entitie) in svalidatorEntities.enumerated() {
             entitie.errorReset()
