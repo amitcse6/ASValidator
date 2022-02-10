@@ -100,3 +100,34 @@ extension UIImageView {
         }
     }
 }
+
+extension UILabel {
+    public func registerASVTF(
+        svalidator: ASValidator?,
+        field: UILabel?,
+        name: String?,
+        errorLabel: UILabel?,
+        errorBorderView: UIView?,
+        errorBorderColor: CGColor?,
+        normalBorderColor: CGColor?,
+        defaultErrorMsg: String?,
+        borderWidth: CGFloat?,
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?
+    ) {
+        if let svalidator = svalidator {
+            svalidator.append(ASValidatorEntity(
+                field: field,
+                name: name,
+                errorLabel: errorLabel,
+                errorBorderView: errorBorderView,
+                errorBorderColor: errorBorderColor,
+                normalBorderColor: normalBorderColor,
+                defaultErrorMsg: defaultErrorMsg,
+                borderWidth: borderWidth,
+                rules: rules,
+                errorProps: errorProps
+            ))
+        }
+    }
+}

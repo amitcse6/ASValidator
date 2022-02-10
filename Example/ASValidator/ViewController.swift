@@ -11,6 +11,7 @@ import ASValidator
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var usernameErrorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -28,6 +29,9 @@ class ViewController: UIViewController {
         asValidator.ignoreErrorAttempt()
         asValidator.delegate = self
         
+        titleLabel.text = "Hi"
+        titleLabel.register(asValidator, nil, [ASVRequiredRule("Title Require"), ASVMinLengthRule(10, "Title min 10")], "Title Ref")
+        
         imageViewRef.register(asValidator, nil, [ASVImageRequiredRule("Image Require")], "Image Ref")
         imageViewRef.image = UIImage(named: "avatar")
         
@@ -41,7 +45,7 @@ class ViewController: UIViewController {
         usernameTextField.delegate = self
         usernameTextField.layer.cornerRadius = 10
         
-        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6)], "Password")
+        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10")], "Password")
         passwordTextField.text = "11111111"
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
