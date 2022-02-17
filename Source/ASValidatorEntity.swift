@@ -13,13 +13,13 @@ public class ASValidatorEntity {
     private var field: Any?
     private var name: String?
     private var errorLabel: UILabel?
-    private var errorBorderView: UIView?
+    public var errorBorderView: UIView?
     private var errorBorderColor: CGColor?
     private var normalBorderColor: CGColor?
     private var defaultErrorMsg: String?
     private var borderWidth: CGFloat?
     private var rules: [ASVRule]?
-    private var errorProps: ASVErrorProps?
+    public var errorProps: ASVErrorProps?
     
     init(
         field: AnyObject?,
@@ -125,6 +125,11 @@ extension ASValidatorEntity {
             if let view = errorProps.view, let errorBorderColor = errorProps.errorBorderColor {
                 view.layer.borderColor = errorBorderColor.cgColor
             }
+            if let views = errorProps.views, let errorBorderColor = errorProps.errorBorderColor {
+                views.forEach { view in
+                    view?.layer.borderColor = errorBorderColor.cgColor
+                }
+            }
             if let label = errorProps.label, let errorErrorTextColor = errorProps.errorErrorTextColor {
                 label.textColor = errorErrorTextColor
             }
@@ -139,9 +144,14 @@ extension ASValidatorEntity {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
             errorBorderView.layer.borderColor = normalBorderColor
         }
-        if let errorProps = errorProps {
+        if let errorProps = errorProps, errorProps.otherBorderHilighted {
             if let view = errorProps.view, let normalBorderColor = errorProps.normalBorderColor {
                 view.layer.borderColor = normalBorderColor.cgColor
+            }
+            if let views = errorProps.views, let normalBorderColor = errorProps.normalBorderColor {
+                views.forEach { view in
+                    view?.layer.borderColor = normalBorderColor.cgColor
+                }
             }
             if let label = errorProps.label, let normalErrorTextColor = errorProps.normalErrorTextColor {
                 label.textColor = normalErrorTextColor

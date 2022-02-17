@@ -21,6 +21,7 @@ public class ASValidator {
     private var numberOfErrorAttempt: Int = 0
     private var errorBorderHilighted = true
     
+    
     public weak var delegate: ASValidatorDelegate?
     
     public init() {

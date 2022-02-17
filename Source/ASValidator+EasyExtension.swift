@@ -16,10 +16,10 @@ extension UITextField {
             name: name,
             errorLabel: errorLabel,
             errorBorderView: self,
-            errorBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.red.cgColor : nil,
-            normalBorderColor: svalidator?.getErrorBorderHilight() ?? false ? UIColor.lightGray.cgColor : nil,
+            errorBorderColor: (svalidator?.getErrorBorderHilight() ?? false) ? UIColor.red.cgColor : nil,
+            normalBorderColor: (svalidator?.getErrorBorderHilight() ?? false) ? UIColor.lightGray.cgColor : nil,
             defaultErrorMsg: defaultErrorMsg,
-            borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
+            borderWidth: (svalidator?.getErrorBorderHilight() ?? false) ? 1.0 : nil,
             rules: rules,
             errorProps: errorProps
         )

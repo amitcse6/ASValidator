@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         buttonRef.setTitle("Button Title", for: .normal)
         
         usernameTextField.layer.borderColor = UIColor.gray.cgColor
-        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email")
+        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email", nil, ASVErrorProps([usernameTextField, usernameTextField], nil, usernameTextField.backgroundColor))
         usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
