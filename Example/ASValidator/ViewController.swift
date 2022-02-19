@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
         usernameTextField.delegate = self
         usernameTextField.layer.borderColor = UIColor.gray.cgColor
-        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email", nil, ASVErrorProps([usernameTextField, usernameTextField], nil, usernameTextField.backgroundColor, nil), "Any Object")
+        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email", nil, ASVErrorProps([usernameTextField, usernameTextField], nil, usernameTextField.backgroundColor, nil), "Any Object", "1")
         usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
@@ -89,9 +89,17 @@ extension ViewController: ASValidatorDelegate {
 }
 
 extension ViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let entity = asValidator.getEntityByTag("1") {
+            let result = entity.validate(true)
+            print("result: \(result)")
+        }
+        asValidator.applyForError(true)
+        return true
+    }
+    
     @available(iOS 10.0, *)
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        asValidator.getEntityByTag("")
         asValidator.applyForError(true)
     }
 }

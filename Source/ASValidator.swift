@@ -62,7 +62,6 @@ public class ASValidator {
         return asvalidation
     }
     
-    @discardableResult
     public func getEntityByTag(_ tag: String) -> ASValidatorEntity? {
         return svalidatorEntities.first { asValidatorEntity in
             return asValidatorEntity.tag == tag

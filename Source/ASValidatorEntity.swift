@@ -59,7 +59,7 @@ public class ASValidatorEntity {
         return sender
     }
     
-    func validate(_ isShowError: Bool) -> ASVResult {
+    public func validate(_ isShowError: Bool) -> ASVResult {
         let svresult = ASVResult()
         if let rules = rules {
             for (index, rule) in rules.enumerated() {
