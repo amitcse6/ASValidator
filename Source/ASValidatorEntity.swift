@@ -20,6 +20,8 @@ public class ASValidatorEntity {
     private var borderWidth: CGFloat?
     private var rules: [ASVRule]?
     public var errorProps: ASVErrorProps?
+    private var sender: Any?
+    public var tag: String?
     
     init(
         field: AnyObject?,
@@ -31,7 +33,9 @@ public class ASValidatorEntity {
         defaultErrorMsg: String?,
         borderWidth: CGFloat? = 1.0,
         rules: [ASVRule]?,
-        errorProps: ASVErrorProps?
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
     ) {
         self.field = field
         self.name = name
@@ -43,10 +47,16 @@ public class ASValidatorEntity {
         self.borderWidth = borderWidth
         self.rules = rules
         self.errorProps = errorProps
+        self.sender = sender
+        self.tag = tag
     }
     
     public func getField() -> Any? {
         return field
+    }
+    
+    public func getSender() -> Any? {
+        return sender
     }
     
     func validate(_ isShowError: Bool) -> ASVResult {

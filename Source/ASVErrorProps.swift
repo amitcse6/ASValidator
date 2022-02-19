@@ -32,7 +32,7 @@ public class ASVErrorProps {
         self.normalErrorTextColor = label?.textColor
     }
     
-    public init(_ views: [UIView?]?, _ label: UILabel?, _ normalBorderColor: UIColor?) {
+    public init(_ views: [UIView?]?, _ label: UILabel?, _ normalBorderColor: UIColor?, _ sender: Any?) {
         self.views = views
         self.label = label
         self.normalBorderColor = normalBorderColor

@@ -38,13 +38,15 @@ class ViewController: UIViewController {
         buttonRef.register(asValidator, nil, [ASVRequiredRule()], "Button Ref")
         buttonRef.setTitle("Button Title", for: .normal)
         
+        usernameTextField.delegate = self
         usernameTextField.layer.borderColor = UIColor.gray.cgColor
-        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email", nil, ASVErrorProps([usernameTextField, usernameTextField], nil, usernameTextField.backgroundColor))
+        usernameTextField.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMailRule()], "Email", nil, ASVErrorProps([usernameTextField, usernameTextField], nil, usernameTextField.backgroundColor, nil), "Any Object")
         usernameTextField.text = "amit@gmail.com"
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         usernameTextField.layer.cornerRadius = 10
         
+        usernameTextField.delegate = self
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10")], "Password")
         passwordTextField.text = "11111111"
         passwordTextField.placeholder = "Enter Password"
@@ -75,9 +77,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ASValidatorDelegate {
-    func validator(_ validator: ASValidator, _ field: Any?, _ result: ASVResult, _ isError: Bool) {
-        if let _ = field as? UITextField {
+    func validator(_ validator: ASValidator, _ entity: ASValidatorEntity?, _ result: ASVResult, _ isError: Bool) {
+        if let field = entity?.getField() as? UITextField {
             print("\(String(describing: result.errors.first?.ruleIndex))")
+            print("\(field)")
+        }
+        if let sender = entity?.getSender() as? String {
+            print("sender: \(sender)")
         }
     }
 }
@@ -85,6 +91,7 @@ extension ViewController: ASValidatorDelegate {
 extension ViewController: UITextFieldDelegate {
     @available(iOS 10.0, *)
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        asValidator.getEntityByTag("")
         asValidator.applyForError(true)
     }
 }

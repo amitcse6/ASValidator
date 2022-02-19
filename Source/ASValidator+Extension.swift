@@ -20,10 +20,12 @@ extension UITextField {
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
         rules: [ASVRule]?,
-        errorProps: ASVErrorProps?
-    ) {
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
+    ) -> ASValidatorEntity? {
         if let svalidator = svalidator {
-            svalidator.append(ASValidatorEntity(
+            let entity = ASValidatorEntity(
                 field: field,
                 name: name,
                 errorLabel: errorLabel,
@@ -33,9 +35,14 @@ extension UITextField {
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
                 rules: rules,
-                errorProps: errorProps
-            ))
+                errorProps: errorProps,
+                sender: sender,
+                tag: tag
+            )
+            svalidator.append(entity)
+            return entity
         }
+        return nil
     }
 }
 
@@ -51,10 +58,12 @@ extension UIButton {
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
         rules: [ASVRule]?,
-        errorProps: ASVErrorProps?
-    ) {
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
+    ) -> ASValidatorEntity? {
         if let svalidator = svalidator {
-            svalidator.append(ASValidatorEntity(
+            let entity = ASValidatorEntity(
                 field: field,
                 name: name,
                 errorLabel: errorLabel,
@@ -64,9 +73,14 @@ extension UIButton {
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
                 rules: rules,
-                errorProps: errorProps
-            ))
+                errorProps: errorProps,
+                sender: sender,
+                tag: tag
+            )
+            svalidator.append(entity)
+            return entity
         }
+        return nil
     }
 }
 
@@ -82,10 +96,12 @@ extension UIImageView {
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
         rules: [ASVRule]?,
-        errorProps: ASVErrorProps?
-    ) {
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
+    ) -> ASValidatorEntity? {
         if let svalidator = svalidator {
-            svalidator.append(ASValidatorEntity(
+            let entity = ASValidatorEntity(
                 field: field,
                 name: name,
                 errorLabel: errorLabel,
@@ -95,9 +111,14 @@ extension UIImageView {
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
                 rules: rules,
-                errorProps: errorProps
-            ))
+                errorProps: errorProps,
+                sender: sender,
+                tag: tag
+            )
+            svalidator.append(entity)
+            return entity
         }
+        return nil
     }
 }
 
@@ -113,10 +134,12 @@ extension UILabel {
         defaultErrorMsg: String?,
         borderWidth: CGFloat?,
         rules: [ASVRule]?,
-        errorProps: ASVErrorProps?
-    ) {
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
+    ) -> ASValidatorEntity? {
         if let svalidator = svalidator {
-            svalidator.append(ASValidatorEntity(
+            let entity = ASValidatorEntity(
                 field: field,
                 name: name,
                 errorLabel: errorLabel,
@@ -126,8 +149,13 @@ extension UILabel {
                 defaultErrorMsg: defaultErrorMsg,
                 borderWidth: borderWidth,
                 rules: rules,
-                errorProps: errorProps
-            ))
+                errorProps: errorProps,
+                sender: sender,
+                tag: tag
+            )
+            svalidator.append(entity)
+            return entity
         }
+        return nil
     }
 }

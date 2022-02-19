@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
+
 public protocol ASValidatorDelegate: AnyObject {
-    func validator(_ validator: ASValidator, _ field: Any?, _ result: ASVResult, _ isError: Bool)
+    func validator(_ validator: ASValidator, _ entity: ASValidatorEntity?, _ result: ASVResult, _ isError: Bool)
 }
 
 public class ASValidator {
@@ -42,11 +43,12 @@ public class ASValidator {
             let result = entity.validate(isShowError ?? true)
             result.entity = entity
             asvalidation.results.append(result)
-            delegate?.validator(self, entity.getField(), result, result.errors.count > 0)
+            delegate?.validator(self, entity, result, result.errors.count > 0)
         }
         return asvalidation
     }
     
+    @discardableResult
     public func apply() -> ASValidation? {
         if numberOfErrorAttempt > 0 {
             self.numberOfErrorAttempt = self.numberOfErrorAttempt - 1
@@ -60,7 +62,12 @@ public class ASValidator {
         return asvalidation
     }
     
-    
+    @discardableResult
+    public func getEntityByTag(_ tag: String) -> ASValidatorEntity? {
+        return svalidatorEntities.first { asValidatorEntity in
+            return asValidatorEntity.tag == tag
+        }
+    }
     
     @discardableResult
     public func applyForError(_ ignoreInitTime: Bool) -> ASValidation? {

@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
-        registerASVTF(
+    @discardableResult
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil, _ sender: Any? = nil, _ tag: String? = nil) -> ASValidatorEntity? {
+        return registerASVTF(
             svalidator: svalidator,
             field: self,
             name: name,
@@ -21,14 +22,17 @@ extension UITextField {
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: (svalidator?.getErrorBorderHilight() ?? false) ? 1.0 : nil,
             rules: rules,
-            errorProps: errorProps
+            errorProps: errorProps,
+            sender: sender,
+            tag: tag
         )
     }
 }
 
 extension UIButton {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
-        registerASVTF(
+    @discardableResult
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil, _ sender: Any? = nil, _ tag: String? = nil) -> ASValidatorEntity? {
+        return registerASVTF(
             svalidator: svalidator,
             field: self,
             name: name,
@@ -39,14 +43,17 @@ extension UIButton {
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules,
-            errorProps: errorProps
+            errorProps: errorProps,
+            sender: sender,
+            tag: tag
         )
     }
 }
 
 extension UIImageView {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
-        registerASVTF(
+    @discardableResult
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil, _ sender: Any? = nil, _ tag: String? = nil) -> ASValidatorEntity? {
+        return registerASVTF(
             svalidator: svalidator,
             field: self,
             name: name,
@@ -57,14 +64,17 @@ extension UIImageView {
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules,
-            errorProps: errorProps
+            errorProps: errorProps,
+            sender: sender,
+            tag: tag
         )
     }
 }
 
 extension UILabel {
-    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil) {
-        registerASVTF(
+    @discardableResult
+    public func register(_ svalidator: ASValidator?, _ errorLabel: UILabel?, _ rules: [ASVRule]?, _ name: String? = nil, _ defaultErrorMsg: String? = nil, _ errorProps: ASVErrorProps? = nil, _ sender: Any? = nil, _ tag: String? = nil) -> ASValidatorEntity? {
+        return registerASVTF(
             svalidator: svalidator,
             field: self,
             name: name,
@@ -75,7 +85,9 @@ extension UILabel {
             defaultErrorMsg: defaultErrorMsg,
             borderWidth: svalidator?.getErrorBorderHilight() ?? false ? 1.0 : nil,
             rules: rules,
-            errorProps: errorProps
+            errorProps: errorProps,
+            sender: sender,
+            tag: tag
         )
     }
 }
