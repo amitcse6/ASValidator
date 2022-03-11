@@ -75,6 +75,9 @@ public class ASValidatorEntity {
                 }else if let field = field as? UILabel, let error = rule.validate(field.text, name, defaultErrorMsg) {
                     error.ruleIndex = index
                     svresult.errors.append(error)
+                }else if let field = field as? UITextView, let error = rule.validate(field.text, name, defaultErrorMsg) {
+                    error.ruleIndex = index
+                    svresult.errors.append(error)
                 }
             }
         }
@@ -120,6 +123,8 @@ public class ASValidatorEntity {
         }else if let field = field as? UIButton {
             field.setTitle("", for: .normal)
         }else if let field = field as? UILabel {
+            field.text = ""
+        }else if let field = field as? UITextView {
             field.text = ""
         }
     }

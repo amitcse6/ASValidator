@@ -159,3 +159,41 @@ extension UILabel {
         return nil
     }
 }
+
+extension UITextView {
+    public func registerASVTF(
+        svalidator: ASValidator?,
+        field: UITextView?,
+        name: String?,
+        errorLabel: UILabel?,
+        errorBorderView: UIView?,
+        errorBorderColor: CGColor?,
+        normalBorderColor: CGColor?,
+        defaultErrorMsg: String?,
+        borderWidth: CGFloat?,
+        rules: [ASVRule]?,
+        errorProps: ASVErrorProps?,
+        sender: Any?,
+        tag: String?
+    ) -> ASValidatorEntity? {
+        if let svalidator = svalidator {
+            let entity = ASValidatorEntity(
+                field: field,
+                name: name,
+                errorLabel: errorLabel,
+                errorBorderView: errorBorderView,
+                errorBorderColor: errorBorderColor,
+                normalBorderColor: normalBorderColor,
+                defaultErrorMsg: defaultErrorMsg,
+                borderWidth: borderWidth,
+                rules: rules,
+                errorProps: errorProps,
+                sender: sender,
+                tag: tag
+            )
+            svalidator.append(entity)
+            return entity
+        }
+        return nil
+    }
+}

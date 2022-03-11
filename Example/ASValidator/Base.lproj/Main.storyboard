@@ -69,6 +69,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EZ9-7j-HVA">
+                                <rect key="frame" x="67" y="417" width="240" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IH4-48-BVR"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
@@ -84,10 +95,12 @@
                             <constraint firstItem="w6Z-Sx-CGx" firstAttribute="trailing" secondItem="7P2-eq-Zoq" secondAttribute="trailingMargin" id="ESe-AA-O7e"/>
                             <constraint firstItem="AbS-ND-cPg" firstAttribute="trailing" secondItem="7P2-eq-Zoq" secondAttribute="trailingMargin" id="FlB-MQ-fxY"/>
                             <constraint firstItem="AbS-ND-cPg" firstAttribute="top" secondItem="pme-kX-AaZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Fp8-Wl-3Ys"/>
+                            <constraint firstItem="EZ9-7j-HVA" firstAttribute="leading" secondItem="7P2-eq-Zoq" secondAttribute="leadingMargin" constant="51" id="KAo-Bp-B83"/>
                             <constraint firstItem="6cn-GG-ob0" firstAttribute="top" secondItem="RFs-vG-zOh" secondAttribute="bottom" constant="11" id="Kae-Na-LH9"/>
                             <constraint firstItem="fRi-sD-SoT" firstAttribute="leading" secondItem="7P2-eq-Zoq" secondAttribute="leadingMargin" id="Qk3-Gm-WTE"/>
                             <constraint firstItem="w6Z-Sx-CGx" firstAttribute="centerX" secondItem="7P2-eq-Zoq" secondAttribute="centerX" id="QqA-Dw-4Nr"/>
                             <constraint firstItem="yi3-kc-dp0" firstAttribute="leading" secondItem="7P2-eq-Zoq" secondAttribute="leadingMargin" id="V95-IZ-Fjj"/>
+                            <constraint firstItem="EZ9-7j-HVA" firstAttribute="top" secondItem="yi3-kc-dp0" secondAttribute="bottom" constant="8" symbolic="YES" id="Xvm-9J-L35"/>
                             <constraint firstItem="yi3-kc-dp0" firstAttribute="centerX" secondItem="7P2-eq-Zoq" secondAttribute="centerX" id="ZBP-js-ObV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y4k-wW-mZH" secondAttribute="trailing" constant="8" id="ckX-lS-Wke"/>
                             <constraint firstItem="fRi-sD-SoT" firstAttribute="top" secondItem="w6Z-Sx-CGx" secondAttribute="bottom" constant="11.5" id="dbI-wp-xNZ"/>
@@ -96,6 +109,7 @@
                             <constraint firstItem="pme-kX-AaZ" firstAttribute="leading" secondItem="7P2-eq-Zoq" secondAttribute="leadingMargin" constant="51" id="nec-0R-4fb"/>
                             <constraint firstItem="6cn-GG-ob0" firstAttribute="trailing" secondItem="7P2-eq-Zoq" secondAttribute="trailingMargin" id="ouq-86-8a7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pme-kX-AaZ" secondAttribute="trailing" constant="52" id="pgC-EF-Vlm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EZ9-7j-HVA" secondAttribute="trailing" constant="52" id="qtZ-eq-yk2"/>
                             <constraint firstItem="6cn-GG-ob0" firstAttribute="leading" secondItem="7P2-eq-Zoq" secondAttribute="leadingMargin" id="ryK-7r-83i"/>
                             <constraint firstItem="RFs-vG-zOh" firstAttribute="trailing" secondItem="7P2-eq-Zoq" secondAttribute="trailingMargin" id="sgr-Nd-3eQ"/>
                             <constraint firstItem="w6Z-Sx-CGx" firstAttribute="top" secondItem="6cn-GG-ob0" secondAttribute="bottom" constant="8.5" id="uzV-4T-Zbf"/>
@@ -109,6 +123,7 @@
                         <outlet property="passwordErrorLabel" destination="fRi-sD-SoT" id="AiG-y4-xuV"/>
                         <outlet property="passwordTextField" destination="w6Z-Sx-CGx" id="9v4-g9-Rsl"/>
                         <outlet property="submitButton" destination="yi3-kc-dp0" id="KaK-iw-Mgc"/>
+                        <outlet property="textView" destination="EZ9-7j-HVA" id="Uqr-HP-2T3"/>
                         <outlet property="titleLabel" destination="Y4k-wW-mZH" id="Omx-SQ-eiP"/>
                         <outlet property="usernameErrorLabel" destination="6cn-GG-ob0" id="IFN-io-25A"/>
                         <outlet property="usernameTextField" destination="RFs-vG-zOh" id="1F9-sC-24f"/>
@@ -120,6 +135,12 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

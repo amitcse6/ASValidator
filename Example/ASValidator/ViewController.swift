@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordErrorLabel: UILabel!
     @IBOutlet weak var buttonRef: UIButton!
     @IBOutlet weak var imageViewRef: UIImageView!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
     private let asValidator = ASValidator()
@@ -45,6 +46,11 @@ class ViewController: UIViewController {
         usernameTextField.placeholder = "Enter Email Address"
         usernameTextField.delegate = self
         usernameTextField.layer.cornerRadius = 10
+        
+        textView.delegate = self
+        textView.layer.borderColor = UIColor.gray.cgColor
+        textView.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMinLengthRule(10)], "TextView", nil, ASVErrorProps([textView, textView], nil, textView.backgroundColor, nil), "Any Object", "1")
+        textView.text = "Product details"
         
         usernameTextField.delegate = self
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10")], "Password")
@@ -86,6 +92,9 @@ extension ViewController: ASValidatorDelegate {
             print("sender: \(sender)")
         }
     }
+}
+
+extension ViewController: UITextViewDelegate {
 }
 
 extension ViewController: UITextFieldDelegate {
