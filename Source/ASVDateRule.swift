@@ -28,48 +28,47 @@ public class ASVDateRule: ASVRule {
     
     public func validate(_ stringDate: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let stringDate = (stringDate as? String)?.trimmingCharacters(in: .whitespaces), stringDate.count > 0 {
-            let _date = ASVDateRule.getDate(stringDate, format)
-            if ASVDateRule.compareDateWith(_date, date, range) {
+//            let _date = ASVDateRule.getDate(stringDate, format)
+//            if ASVDateRule.compareDateWith(_date, date, range) {
                 return nil
-            }
+            //}
         }
         return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") \(ASVDateRule.getRangeStringMessage(range)) \(date)")
     }
 }
 
 extension ASVDateRule {
-    static func compareDateWith(_ date1: Date, _ date2: Date, _ range: ASVDateRange) -> Bool {
-        let value = date1.compare(date2)
-        switch(range) {
-        case .min:
-            switch date1.compare(date2) {
-            case .orderedAscending: return true
-            case .orderedDescending: return false
-            case .orderedSame: return false
-            }
-        case .max:
-            switch date1.compare(date2) {
-            case .orderedAscending: return false
-            case .orderedDescending: return true
-            case .orderedSame: return false
-            }
-        case .equal:
-            switch date1.compare(date2) {
-            case .orderedAscending: return false
-            case .orderedDescending: return false
-            case .orderedSame: return true
-            }
-        }
-    }
-    
-    static func getDate(_ stringDate: String?, _ format: String? = nil) -> Date {
-        guard let stringDate = stringDate else {return Date()}
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        guard let date = dateFormatter.date(from: stringDate) else { return Date() }
-        return date
-    }
-    
+//    static func compareDateWith(_ date1: Date, _ date2: Date, _ range: ASVDateRange) -> Bool {
+//        switch(range) {
+//        case .min:
+//            switch date1.compare(date2) {
+//            case .orderedAscending: return true
+//            case .orderedDescending: return false
+//            case .orderedSame: return false
+//            }
+//        case .max:
+//            switch date1.compare(date2) {
+//            case .orderedAscending: return false
+//            case .orderedDescending: return true
+//            case .orderedSame: return false
+//            }
+//        case .equal:
+//            switch date1.compare(date2) {
+//            case .orderedAscending: return false
+//            case .orderedDescending: return false
+//            case .orderedSame: return true
+//            }
+//        }
+//    }
+//
+//    static func getDate(_ stringDate: String?, _ format: String? = nil) -> Date {
+//        guard let stringDate = stringDate else {return Date()}
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = format
+//        guard let date = dateFormatter.date(from: stringDate) else { return Date() }
+//        return date
+//    }
+//
     static func getRangeStringMessage(_ range: ASVDateRange) -> String {
         switch(range) {
         case .min:
