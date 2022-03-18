@@ -49,8 +49,8 @@ class ViewController: UIViewController {
         
         textView.delegate = self
         textView.layer.borderColor = UIColor.gray.cgColor
-        textView.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMinLengthRule(10)], "TextView", nil, ASVErrorProps([textView, textView], nil, textView.backgroundColor, nil), "Any Object", "1")
-        textView.text = "Product details"
+        textView.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMinLengthRule(5), ASVDateRule(Calendar.current.date(byAdding: DateComponents(day:+0), to: Date())!, "yyyy-MM-dd", .min, nil)], "TextView", nil, ASVErrorProps([textView, textView], nil, textView.backgroundColor, nil), "Any Object", "1")
+        textView.text = "2022-03-20"
         
         usernameTextField.delegate = self
         passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10")], "Password")
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         passwordTextField.delegate = self
         
         asValidator.invalidDisableViews([submitButton])
-        asValidator.ignoreErrorAttempt(3)
+        asValidator.ignoreErrorAttempt(10)
         
         asValidator.hideKeyboardWhenTappedAround(view)
     }

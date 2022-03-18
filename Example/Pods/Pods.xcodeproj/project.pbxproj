@@ -31,6 +31,7 @@
 		52C305CF7CD86946A3BB39DF713CA334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		896741EC27BA45BC00BAF156 /* ASVRegxRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896741EB27BA45BC00BAF156 /* ASVRegxRule.swift */; };
 		89717C1E27A6575800265F8C /* ASVErrorProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89717C1D27A6575800265F8C /* ASVErrorProps.swift */; };
+		89FF905127E444CC00BA32A2 /* ASVDateRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF905027E444CC00BA32A2 /* ASVDateRule.swift */; };
 		8ABE8B813E63D58AFBEB19CB037A4301 /* Pods-ASValidator_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC961F67475A3D5330AC3159DFF0141 /* Pods-ASValidator_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C73642C52F3F6331583886DA35F42FAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		C871F5ABDECFF94F46572671678C5034 /* ASValidator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BB7320667BBBE97B8B448485FD9352E /* ASValidator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,6 +97,7 @@
 		844A929B93FC0656944C6FA0D02ECCBD /* ASValidator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ASValidator-Info.plist"; sourceTree = "<group>"; };
 		896741EB27BA45BC00BAF156 /* ASVRegxRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVRegxRule.swift; sourceTree = "<group>"; };
 		89717C1D27A6575800265F8C /* ASVErrorProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVErrorProps.swift; sourceTree = "<group>"; };
+		89FF905027E444CC00BA32A2 /* ASVDateRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASVDateRule.swift; sourceTree = "<group>"; };
 		8F58CB230795366376C42995B2981E2C /* ASValidator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ASValidator.modulemap; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B857E455D0640F524A708945BB10C1C6 /* ASValidator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ASValidator.debug.xcconfig; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				289FA6BB24C5A1020003BA8B /* ASVEqualRule.swift */,
 				289FA6BD24C5A2E40003BA8B /* ASVNotEqualRule.swift */,
 				2873AA4824AA290900E5C0A9 /* ASVRule.swift */,
+				89FF905027E444CC00BA32A2 /* ASVDateRule.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				2873AA5024AA290900E5C0A9 /* ASValidatorEntity.swift in Sources */,
 				89717C1E27A6575800265F8C /* ASVErrorProps.swift in Sources */,
 				2873AA4F24AA290900E5C0A9 /* ASVError.swift in Sources */,
+				89FF905127E444CC00BA32A2 /* ASVDateRule.swift in Sources */,
 				896741EC27BA45BC00BAF156 /* ASVRegxRule.swift in Sources */,
 				D66D5A3C255D4E4700E1D811 /* ASVImageRequiredRule.swift in Sources */,
 				D66D5A3E255D4E4700E1D811 /* ASValidator+EasyExtension.swift in Sources */,
