@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         
         textView.delegate = self
         textView.layer.borderColor = UIColor.gray.cgColor
-        textView.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMinLengthRule(5), ASVDateRule(Calendar.current.date(byAdding: DateComponents(day:+0), to: Date())!, "yyyy-MM-dd", .min, nil)], "TextView", nil, ASVErrorProps([textView, textView], nil, textView.backgroundColor, nil), "Any Object", "1")
+        textView.register(asValidator, usernameErrorLabel,[ASVRequiredRule(), ASVMinLengthRule(5), ASVDateRule("2022-12-22", "yyyy-MM-dd", .min, nil)], "TextView", nil, ASVErrorProps([textView, textView], nil, textView.backgroundColor, nil), "Any Object", "1")
         textView.text = "2022-03-20"
         
         usernameTextField.delegate = self

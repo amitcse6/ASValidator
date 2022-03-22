@@ -1,26 +1,27 @@
 //
-//  ASVDateRule.swift
-//  ASValidator
+//  ASVDateFieldRule.swift
+//  Gonzo
 //
-//  Created by AMIT on 3/18/22.
+//  Created by AMIT on 3/21/22.
 //
 
 import Foundation
+import UIKit
 
-public enum ASVDateRange: String {
+public enum ASVDateFieldRange: String {
     case min
     case max
     case equal
 }
 
-public class ASVDateRule: ASVRule {
+public class ASVDateFieldRule: ASVRule {
     var errorMsg: String?
-    var dateValue: String
+    var dateField: UITextField
     var format: String
-    var range: ASVDateRange
+    var range: ASVDateFieldRange
     
-    public init(_ dateValue: String, _ format: String, _ range: ASVDateRange, _ errorMsg: String? = nil) {
-        self.dateValue = dateValue
+    public init(_ dateField: UITextField, _ format: String, _ range: ASVDateFieldRange, _ errorMsg: String? = nil) {
+        self.dateField = dateField
         self.format = format
         self.range = range
         self.errorMsg = errorMsg
@@ -28,18 +29,18 @@ public class ASVDateRule: ASVRule {
     
     public func validate(_ dateString: Any?, _ fieldName: String?, _ defaultErrorMsg: String?) -> ASVError? {
         if let dateString1 = (dateString as? String)?.trimmingCharacters(in: .whitespaces) {
-            let date1 = ASVDateRule.getDate(dateString1, format)
-            let date2 = ASVDateRule.getDate(dateValue.trimmingCharacters(in: .whitespaces), format)
-            if ASVDateRule.compareDateWith(date1, date2, range) {
+            let date1 = ASVDateFieldRule.getDate(dateString1, format)
+            let date2 = ASVDateFieldRule.getDate(dateField.text?.trimmingCharacters(in: .whitespaces), format)
+            if ASVDateFieldRule.compareDateWith(date1, date2, range) {
                 return nil
             }
         }
-        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") \(ASVDateRule.getRangeStringMessage(range)) \(dateValue)")
+        return ASVError(errorMsg: errorMsg ?? defaultErrorMsg ?? "\(fieldName ?? "") \(ASVDateFieldRule.getRangeStringMessage(range)) \(dateField.text ?? "")")
     }
 }
 
-extension ASVDateRule {
-    static func compareDateWith(_ date1: Date, _ date2: Date, _ range: ASVDateRange) -> Bool {
+extension ASVDateFieldRule {
+    static func compareDateWith(_ date1: Date, _ date2: Date, _ range: ASVDateFieldRange) -> Bool {
         switch(range) {
         case .min:
             if date1 > date2 {
@@ -65,7 +66,7 @@ extension ASVDateRule {
         return date
     }
 
-    static func getRangeStringMessage(_ range: ASVDateRange) -> String {
+    static func getRangeStringMessage(_ range: ASVDateFieldRange) -> String {
         switch(range) {
         case .min:
             return "will be minimum"

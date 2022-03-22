@@ -131,7 +131,7 @@ public class ASValidatorEntity {
 }
 
 extension ASValidatorEntity {
-    func setErrorStyle(_ errorMsg: String) {
+    public func setErrorStyle(_ errorMsg: String) {
         if let errorBorderView = errorBorderView {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
             errorBorderView.layer.borderColor = errorBorderColor
@@ -154,7 +154,7 @@ extension ASValidatorEntity {
         }
     }
     
-    func setNormalStyle(_ errorMsg: String) {
+    public func setNormalStyle(_ errorMsg: String) {
         if let errorBorderView = errorBorderView {
             errorBorderView.layer.borderWidth = borderWidth ?? 0
             errorBorderView.layer.borderColor = normalBorderColor
