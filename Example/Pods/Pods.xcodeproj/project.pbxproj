@@ -30,6 +30,7 @@
 		47A914DA7C98A212439529AC3862BDC4 /* Pods-ASValidator_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28B9B673C15A465D055E6EE52A427CF4 /* Pods-ASValidator_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52C305CF7CD86946A3BB39DF713CA334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		8957CC4627F17CC600480AEA /* ASVMultiPleRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957CC4527F17CC600480AEA /* ASVMultiPleRule.swift */; };
+		8957CC4827F1A39300480AEA /* ASVDateFieldRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957CC4727F1A39300480AEA /* ASVDateFieldRule.swift */; };
 		896741EC27BA45BC00BAF156 /* ASVRegxRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896741EB27BA45BC00BAF156 /* ASVRegxRule.swift */; };
 		89717C1E27A6575800265F8C /* ASVErrorProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89717C1D27A6575800265F8C /* ASVErrorProps.swift */; };
 		89FF905127E444CC00BA32A2 /* ASVDateRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF905027E444CC00BA32A2 /* ASVDateRule.swift */; };
@@ -97,6 +98,7 @@
 		82B9B18DAE79EF48FCDDD13E518F9D0C /* Pods-ASValidator_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ASValidator_Tests.modulemap"; sourceTree = "<group>"; };
 		844A929B93FC0656944C6FA0D02ECCBD /* ASValidator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ASValidator-Info.plist"; sourceTree = "<group>"; };
 		8957CC4527F17CC600480AEA /* ASVMultiPleRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASVMultiPleRule.swift; sourceTree = "<group>"; };
+		8957CC4727F1A39300480AEA /* ASVDateFieldRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVDateFieldRule.swift; sourceTree = "<group>"; };
 		896741EB27BA45BC00BAF156 /* ASVRegxRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVRegxRule.swift; sourceTree = "<group>"; };
 		89717C1D27A6575800265F8C /* ASVErrorProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVErrorProps.swift; sourceTree = "<group>"; };
 		89FF905027E444CC00BA32A2 /* ASVDateRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASVDateRule.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				289FA6BD24C5A2E40003BA8B /* ASVNotEqualRule.swift */,
 				2873AA4824AA290900E5C0A9 /* ASVRule.swift */,
 				89FF905027E444CC00BA32A2 /* ASVDateRule.swift */,
+				8957CC4727F1A39300480AEA /* ASVDateFieldRule.swift */,
 				8957CC4527F17CC600480AEA /* ASVMultiPleRule.swift */,
 			);
 			path = Source;
@@ -460,6 +463,7 @@
 				89FF905127E444CC00BA32A2 /* ASVDateRule.swift in Sources */,
 				896741EC27BA45BC00BAF156 /* ASVRegxRule.swift in Sources */,
 				D66D5A3C255D4E4700E1D811 /* ASVImageRequiredRule.swift in Sources */,
+				8957CC4827F1A39300480AEA /* ASVDateFieldRule.swift in Sources */,
 				D66D5A3E255D4E4700E1D811 /* ASValidator+EasyExtension.swift in Sources */,
 				2873AA4E24AA290900E5C0A9 /* ASVMaxLengthRule.swift in Sources */,
 				2873AA5124AA290900E5C0A9 /* ASVRule.swift in Sources */,
