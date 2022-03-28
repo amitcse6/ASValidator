@@ -11,6 +11,8 @@ public enum ASVDateRange: String {
     case min
     case max
     case equal
+    case minOrEqual
+    case maxOrEqual
 }
 
 public class ASVDateRule: ASVRule {
@@ -53,6 +55,14 @@ extension ASVDateRule {
             if date1 == date2 {
                 return true
             }
+        case .minOrEqual:
+            if date1 > date2 || date1 == date2 {
+                return true
+            }
+        case .maxOrEqual:
+            if date1 < date2 || date1 == date2 {
+                return true
+            }
         }
         return false
     }
@@ -73,6 +83,10 @@ extension ASVDateRule {
             return "will be maximum"
         case .equal:
             return "will be equal"
+        case .minOrEqual:
+            return "will be min or equal"
+        case .maxOrEqual:
+            return "will be Max or equal"
         }
     }
 }
