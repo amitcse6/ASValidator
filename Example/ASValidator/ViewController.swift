@@ -53,8 +53,8 @@ class ViewController: UIViewController {
         textView.text = "2022-03-20"
         
         usernameTextField.delegate = self
-        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10")], "Password")
-        passwordTextField.text = "11111111"
+        passwordTextField.register(asValidator, passwordErrorLabel, [ASVRequiredRule(), ASVMinLengthRule(6), ASVMaxLengthRule(20, "Password max 10"), ASVMultiPleRule([5])], "Password")
+        passwordTextField.text = "11111111000"
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.delegate = self
         
